@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>2级菜单</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 380px;
+			height: 1000px;
+			margin: 50px auto;
+		}
+		.box3{
+			height: 950px;
+			width: 380px;
+			background-color: red;
+		}
+		.box1{
+			height: 50px;
+			width: 380px;
+			background-color: gray;
+			list-style: none;
+		}
+		.box1>li{
+			float: left;
+			width: 100px;
+			height: 50px;
+			background-color: yellow;
+			margin-left: 20px;
+			line-height: 50px;
+			text-align: center;
+		}
+		.box2>li{
+			list-style: none;
+			background-color: blue;
+			text-align: center;
+			width: 100px;
+			height: 50px;
+			transform: rotateY(180deg);
+			opacity: 0;
+			transition: all 1s;
+		}
+		.box1>li>p:hover~.box2>li{
+			transform: rotateY(0deg);
+			opacity: 1;
+		}
+		.box1>li:hover .box2>li:first-child{
+			transition-delay: 0ms;
+		}
+		.box1>li:hover .box2>li:nth-child(2){
+			transition-delay: 200ms;
+		}
+		.box1>li:hover .box2>li:last-child{
+			transition-delay: 400ms;
+		}
+		.box2>li:first-child{
+			transition-delay: 400ms;
+		}
+		.box2>li:nth-child(2){
+			transition-delay: 200ms;
+		}
+		.box2>li:last-child{
+			transition-delay: 0ms;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<ul class="box1">
+			<li class="father">
+				<p>1级菜单</p>
+				<ul class="box2">
+					<li>2级菜单</li>
+					<li>2级菜单</li>
+					<li>2级菜单</li>
+				</ul>
+			</li>
+			<li>
+				<p>1级菜单</p>
+				<ul class="box2">
+					<li>2级菜单</li>
+					<li>2级菜单</li>
+					<li>2级菜单</li>
+				</ul>
+			</li>
+			<li>
+				<p>1级菜单</p>
+				<ul class="box2">
+					<li>2级菜单</li>
+					<li>2级菜单</li>
+					<li>2级菜单</li>
+				</ul>
+			</li>
+		</ul>
+		<div class="box3">我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容</div>
+	</div>
+</body>
+</html>

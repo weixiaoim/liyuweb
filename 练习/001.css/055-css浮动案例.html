@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>浮动案例</title>
+	<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	.box{
+		margin: 0 auto;
+		width: 960px;
+	}
+	.clearfix:after{
+        content: "";
+        clear: both;
+        display: block;
+        height: 0px;
+        visibility: hidden;
+    }
+    .clearfix{
+        *zoom:1;
+    }
+	header{
+		padding-bottom: 5px; 
+	}
+	.son1{
+		height: 200px;
+		width: 200px;
+		background-color: red;
+		float: left;
+	}
+	.son2{
+		height: 100px;
+		width: 200px;
+		background-color: gray;
+		float: right;
+	}
+	.son3{
+		height: 100px;
+		width: 700px;
+		background-color: blue;
+		float: right;
+	}
+	section{
+		padding-bottom: 5px; 
+	}
+	.son4{
+		float: left; 
+	}
+	.son4-top{
+		width: 800px;
+		padding-bottom: 5px;
+	}
+	.son4-top-left{
+		width: 600px;
+		height: 495px;
+		float: left;
+		padding-right: 5px; 
+	}
+	.son4-top-left-top{
+		width: 600px;
+		height: 290px;
+		background-color: blue;
+		float: left;
+	}
+	.son4-top-left-bottom{
+		width: 600px;
+		height: 195px;
+		background-color: blue;
+		float: left;
+		margin-top: 5px; 
+	}
+	.son4-top-right{
+		width: 190px;
+		height: 490px;
+		background-color: pink;
+		float: right;
+	}
+	.son4-bottom{
+		height: 100px;
+		width: 800px;
+		background-color: red;
+		padding-bottom: 5px;
+		float: left;
+	}
+	.son5{
+		height: 600px;
+		width: 150px;
+		background-color: aqua;
+		float: right;
+	}
+	footer{
+		height: 100px;
+	}
+	.user{
+		height: 100px;
+		width: 100%;
+		float: left;
+		background-color: purple;
+	}
+	</style>
+</head>
+<body>
+	<header class="box clearfix">
+		<div class="son1"></div>
+		<div class="son2"></div>
+		<div class="son3"></div>
+	</header>
+	<section class="box clearfix">
+		<div class="son4">
+			<div class="son4-top">
+				<div class="son4-top-left">
+					<div class="son4-top-left-top"></div>
+					<div class="son4-top-left-bottom"></div>
+				</div>
+				<div class="son4-top-right"></div>
+			</div>
+			<div class="son4-bottom"></div>
+		</div>
+		<aside class="son5"></aside>
+	</section>
+	<footer class="box">
+		<div class="user"></div>
+	</footer>
+</body>
+</html>

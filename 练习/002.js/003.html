@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>003</title>
+	<style type="text/css">
+		div{
+			background-color: blue;
+			width: 100px;
+			height: 100px;
+			margin: 100px auto;
+		}
+	</style>
+	<script type="text/javascript">
+		function tobig(){
+				document.getElementById('box').style.height='500px';
+				document.getElementById('box').style.width='500px';
+				document.getElementById('box').style.background='red';
+		}
+		function tosmall(){
+				document.getElementById('box').style.height='100px';
+				document.getElementById('box').style.width='100px';
+				document.getElementById('box').style.background='blue';
+		}
+	</script>
+</head>
+<body>
+	<div id="box" onmouseover="tobig()" onmouseout="tosmall()" ></div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>定位流布局注意点</title>
+	<style type="text/css">
+		*{
+			width: 0;
+			padding: 0;
+		}
+		.box1{
+			width: 100px;
+			height: 100px;
+			background-color: blue;
+			border: 10px solid black;
+			margin: 50px;
+			padding: 50px;
+
+			position: absolute;
+			left: 20px;
+			top: 20px;
+		}
+		.box2{
+			width: 3000px;
+			height: 3000px;
+			background-color: red;
+		}
+		.box3{
+			width: 100px;
+			height: 100px;
+			background-color: yellow;
+			border: 20px solid green;
+			position: absolute;
+			right: 100px;
+			bottom: 100px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box1">
+	</div>
+	<div class="box2"></div>
+	<span class="box3">span</span>
+</body>
+</html>

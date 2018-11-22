@@ -1,0 +1,5 @@
+@import url(021-css使用导入2.css);
+p{
+		color:blue;
+		font-size: 25px;
+	}

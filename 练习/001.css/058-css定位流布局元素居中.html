@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>定位流布局元素居中</title>
+	<style type="text/css">
+		.box1{
+			width: 500px;
+			height: 500px;
+			border: 1px solid #000;
+			background-color: pink;
+			margin: 0 auto;
+			position: relative;
+		}
+		.box2{
+			width: 200px;
+			height: 200px;
+			background-color: blue;
+			position: absolute;
+			left: 250px;
+			margin-left: -100px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box1">
+		<div class="box2"></div>
+	</div>
+</body>
+</html>

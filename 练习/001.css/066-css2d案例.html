@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>2d案例</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 500px;
+			height: 334px;
+			margin: 100px auto; 
+			border: 1px solid #000;
+			perspective: 500px;
+			/*transform-origin: center bottom;*/
+			/*transition: transform 1s linear;*/
+		}
+		img{
+			width: 100%;
+			transform-origin: center bottom;	
+			transition: transform 10s linear;
+		}
+		div:hover img{
+			transform: rotateY(3600deg);
+		}
+	</style>
+</head>
+<body>
+	<div><img src="../img/rb1.jpg" alt=""></div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>旋转轴向修改</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			width: 300px;
+			margin:0 auto;
+			list-style: none;
+		}
+		li{
+			width: 300px;
+			/*margin-top: 100px;*/
+			margin: 100px auto; 
+			perspective:500px;
+		}
+		img{
+			width: 100%;
+		}
+		li:first-child img{
+			transform: rotateX(30deg);
+		}
+		li:nth-child(2) img{
+			transform: rotateY(30deg);
+		}
+		li:last-child img{
+			transform: rotateZ(45deg);
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li><img src="../img/rb1.jpg" alt=""></li>
+		<li><img src="../img/rb2.jpg" alt=""></li>
+		<li><img src="../img/rb3.jpg" alt=""></li>
+	</ul>
+</body>
+</html>

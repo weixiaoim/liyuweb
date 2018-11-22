@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>盒子不变</title>
+	<style type="text/css">
+	.father{
+		border: 1px solid red;
+	}
+	.father div{
+		width: 100px;
+		height: 100px;
+		display: inline-block;
+		vertical-align: bottom;
+	}
+	.son1{
+		background-color: yellow;
+	}
+	.son2{
+		background-color: blue;
+		border: 10px solid black;
+		padding: 10px;
+		box-sizing: border-box;
+	}
+	.son3{
+		background-color: pink;
+	}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div class="son1"></div><div class="son2"></div><div class="son3"></div>
+	</div>
+</body>
+</html>
