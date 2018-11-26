@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>点击隐藏显示</title>
+</head>
+<body>
+	<input type="button" value="点击隐藏显示" id="btn">
+	<div id="box">
+		我是内容00000000000000000000
+	</div>
+</body>
+<script type="text/javascript">
+	var oBtn = document.getElementById('btn');
+	var oBox = document.getElementById('box');
+	oBtn.onclick = function(){
+		if (oBox.style.display == 'none') {
+			oBox.style.display = 'block';
+		}else{
+			oBox.style.display = 'none';
+		}
+	}
+</script>
+</html>
