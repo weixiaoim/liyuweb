@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>for</title>
+<!-- 	<script type="text/javascript">
+		for(var m=1;m<=9;m++){
+			for(var n=1;n<=m;n++){
+				if (n*m<10) {
+					document.write("&nbsp;&nbsp;");
+				}
+				document.write(n+"x"+m+"=");
+				document.write(n*m+"&nbsp;");
+			}
+			document.write("<br>");
+		}
+	</script> -->
+</head>
+<body>
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+		<li>7</li>
+		<li>8</li>
+		<li>9</li>
+		<li>10</li>
+	</ul>
+</body>
+<script>
+	var ali=document.getElementsByTagName("li");
+	for(i=0;i<ali.length;i++){
+		ali[i].style.background='blue'
+	}
+</script>
+</html>
