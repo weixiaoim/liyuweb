@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>星星</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.kong{
+			display: inline-block;
+			width: 20px;
+			height: 20px;
+		}
+		.xing{
+			display: inline-block;
+			width: 20px;
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+	
+</body>
+<script>
+		document.write('<div align="center">');
+        for (var i=1;i<=5;i++) {
+           	for(var k=1;k<=5-i;k++){
+          		document.write("<span class='kong'></span>")
+           	}
+            for(var j=1;j<=i;j++){
+                document.write("<span class='xing'>*</span>");
+            }
+            document.write("<br/>");
+        }
+	</script>
+</html>

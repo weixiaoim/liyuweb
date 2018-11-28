@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>月历</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box1{
+			width: 380px;
+			height: 600px;
+			background-color: gray;
+			border: 1px solid #000;
+			margin: 50px auto;
+		}
+		ul{
+			overflow: hidden;
+		}
+		li{
+			float: left;
+			list-style: none;
+			width: 100px;
+			height: 100px;
+			line-height: 100px;
+			margin: 20px 0 0 20px;
+			background-color: orange;
+			text-align: center;
+			color: yellow;
+			font-size: 40px;
+			cursor: pointer;	
+		}
+		.box2{
+			width: 100%;
+			height: 200px;
+			box-sizing: border-box;
+			margin: 20px;
+			font-size: 20px;
+		}
+		.active{
+			color: orange;
+			background-color: yellow;
+		}
+	</style>
+</head>
+<body>
+	<div class="box1">
+		<ul>
+			<li class="active">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+			<li>7</li>
+			<li>8</li>
+			<li>9</li>
+			<li>10</li>
+			<li>11</li>
+			<li>12</li>
+		</ul>
+		<div class="box2">
+			<h2>1月</h2>
+			<p>吃饭</p>
+		</div>
+	</div>
+</body>
+<script>
+	var oBox1 = document.getElementsByTagName('li');
+	var oBox2 = document.querySelector('.box2');
+	for(var i=0;i<oBox1.length; i++){
+		oBox1[i].index=i;
+		oBox1[i].onmouseover = function(){
+			for(var j=0;j<oBox1.length;j++){
+				oBox1[j].className='';
+			}
+			this.className="active";
+			oBox2.innerHTML = "<h2>"+(this.index+1)+"月</h2>"
+		}
+	}
+</script>
+</html>

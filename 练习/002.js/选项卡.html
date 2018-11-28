@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>选项卡</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			list-style: none;
+			margin-bottom: 5px;
+		}
+		#tab-list{
+			overflow: hidden;
+		}
+		#tab-list li{
+			float: left;
+			width: 100px;
+			height: 50px;
+			line-height: 50px;
+			text-align: center; 
+			cursor: pointer;
+		}
+		#tab-container li{
+			width: 400px;
+			height: 400px;
+			line-height: 400px;
+			/*border: 1px solid purple;*/
+			margin-bottom: 10px; 
+			display: none;
+			font-size: 80px;
+			text-align: center;
+		}
+		#tab-container li:first-child{
+			display: block;
+		}
+		.active{
+			color: #ff6700;
+			border-bottom: 2px solid #ff6700;
+		}
+	</style>
+</head>
+<body>
+	<ul id="tab-list">
+		<li class="active">rb1</li>
+		<li>rb2</li>
+		<li>rb3</li>
+		<li>rb4</li>
+	</ul>
+	<ul id="tab-container">
+		<li><img src="../img/rb1.jpg"></li>
+		<li><img src="../img/rb2.jpg"></li>
+		<li><img src="../img/rb3.jpg"></li>
+		<li><img src="../img/rb4.jpg"></li>
+	</ul>
+</body>
+<script type="text/javascript">
+	var aBtn = document.querySelectorAll('#tab-list li');
+	var aContent = document.querySelectorAll('#tab-container li');
+	for (var i = 0; i < aBtn.length; i++) {
+		aBtn[i].index=i;
+		aBtn[i].onclick = function(){
+			for(var j=0;j<aBtn.length;j++){
+				aBtn[j].className='';
+				aContent[j].style.display="none";
+			}
+			this.className="active";
+			aContent[this.index].style.display='block';
+		}
+	}
+</script>
+</html>
