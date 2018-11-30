@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>变量作用域</title>
+	<script>
+		var a = 1;
+		function fn() {
+			console.log("fn",a);
+			var a = 2;
+			function fn1(){
+				console.log('fn1',a);
+			}
+			fn1();
+		}
+		console.log('groba1',a);
+		fn();
+		console.log('groba2',a);
+
+
+
+		// var a = 1;
+		// function fn() {
+		// 	console.log("fn",a);
+		// 	a = 2;
+		// 	function fn1(){
+		// 		console.log('fn1',a);
+		// 	}
+		// 	fn1();
+		// }
+		// console.log('groba1',a);
+		// fn();
+		// console.log('groba2',a);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
