@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>去重数组</title>
+	<script>
+		var arr1 = [2,5,3,5,2,9,4,6,8,1,8];
+		
+		function uniqueArray(arr1) {
+			var arr =[];
+			for (var i = 0; i < arr1.length; i++) {
+				var arrt = false;
+				for (var j = 0; j < arr.length; j++) {
+					if (arr1[i] == arr[j]) {
+						arrt = true;
+						break;
+					}
+				}
+				if (!arrt) {
+					arr.push(arr1[i]);
+				}	
+			}
+			return arr;
+		}
+		var arr2=uniqueArray(arr1);
+		console.log(arr1);
+		console.log(arr2);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
