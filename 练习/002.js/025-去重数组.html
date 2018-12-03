@@ -6,21 +6,24 @@
 	<script>
 		var arr1 = [2,5,3,5,2,9,4,6,8,1,8];
 		
-		function uniqueArray(arr1) {
-			var arr =[];
-			for (var i = 0; i < arr1.length; i++) {
-				var arrt = false;
-				for (var j = 0; j < arr.length; j++) {
-					if (arr1[i] == arr[j]) {
-						arrt = true;
-						break;
-					}
+		function uniqueArray(obj) {
+			var result =[];
+			for (var i = 0; i < obj.length; i++) {
+				// var isDop = false;
+				// for (var j = 0; j < result.length; j++) {
+				// 	if (obj[i] == result[j]) {
+				// 		isDop = true;
+				// 		break;
+				// 	}
+				// }
+				// if (!isDop) {
+				// 	result.push(obj[i]);
+				// }	
+				if (result.indexOf(obj[i]) ==-1){
+					result.push(obj[i]);
 				}
-				if (!arrt) {
-					arr.push(arr1[i]);
-				}	
 			}
-			return arr;
+			return result;
 		}
 		var arr2=uniqueArray(arr1);
 		console.log(arr1);

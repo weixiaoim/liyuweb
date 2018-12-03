@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>鼠标移入高亮移出还原</title>
+</head>
+<body>
+	<ul id="uli">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+		<li>7</li>
+		<li>8</li>
+		<li>9</li>
+		<li>10</li>
+	</ul>
+</body>
+<script type="text/javascript">
+	var oUl = document.getElementById('uli');
+	var aLi = oUl.children;
+	for(var i=0;i<aLi.length;i++){
+		if(i%2==0){
+			aLi[i].style.background='pink';
+		}else{
+			aLi[i].style.background='purple';
+		}
+		aLi[i].onmouseover = function () {
+			orgin=this.style.background;
+			this.style.background = 'blue';
+		}
+		aLi[i].onmouseout = function () {
+			this.style.background =orgin;
+		}
+	}
+</script>
+</html>
