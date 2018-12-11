@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件处理</title>
+</head>
+<body>
+	<button id="btn">点我</button>
+	<button id="btn1">删除事件</button>
+</body>
+<script>
+	var oBtn = document.getElementById('btn');
+	var oBtn1 = document.getElementById('btn1');
+	function haha(){
+		alert('haha');
+	}
+	function sayHi(){
+		alert('hi');
+	}
+	oBtn.addEventListener('click',haha,false);
+	oBtn.addEventListener('click',sayHi,false);
+	oBtn.addEventListener('click',function(){
+		alert('hehe');
+	},false);
+	oBtn1.addEventListener('click',function(){
+		oBtn.removeEventListener('click',haha,false);
+	},false);
+</script>
+</html>
