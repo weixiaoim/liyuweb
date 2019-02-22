@@ -8,14 +8,18 @@
 			margin: 0;
 			padding: 0;
 		}
+		#box{
+			width: 500px;
+			margin: 100px auto; 
+			position: relative;
+		}
 		#wrap{
 			width: 30px;
-			height: 600px;
+			height: 402px;
 			background-color: gray;
-			position: relative;
-			float: right;
-			margin-top: 0px;
-			margin-right: 200px;
+			position: absolute;
+			top: 0;
+			left: 401px;
 		}
 		#btn{
 			position: absolute;
@@ -25,22 +29,40 @@
 			height: 30px;
 			background-color: blue;
 		}
-		#box{
-			width: 100px;
-			height: 100px;
-			background-color: purple;
-			margin-top: 100px;
-			margin-left: 100px;
-			opacity: 0;
+		#content{
+			width: 400px;
+			height: 400px;
+			border: 1px solid #000;
+			line-height: 20px;
+			position: relative;
+			overflow: hidden;
+		}
+		#txt{
+			position: absolute;
+			top: 0;
+			left: 0;
 		}
 	</style>
 </head>
-<body>\
+<body>
 	<div id="box">
 		<div id="wrap">
 			<div id="btn"></div>
-			<div class="content">
-				<div id="txt"></div>
+		</div>
+		<div id="content">
+			<div id="txt">
+				戴尚贤：中国的改革开放是极为成功的。通过改革开放，中国改变了人民的命运，自身实力亦得到了提升。各领域都呈现上升发展态势。大概35年前我就开始关注中国。当时的中国和现在相比，简直就像另一个世界。显然，改革开放，融入世界，向市场经济转型，并且从某种意义上讲，解放了人们的思想，这些使得中国实现了巨大的飞跃。我对于中国所取得的杰出成就深表钦佩。
+
+		        与一些观察人士的意见相异，我相信中国仍然具有巨大的发展潜力，可以进一步提升、赶超、发展。如果中国保持现在所采取的这些为社会带来了光明前景的方法和政策，中国一定会继续进步。因为迄今为止，这些（方法和政策）基本没带来什么失败案例。当然，中国也需要进行改革，因为出现了包括环境污染、城市规模过大等副效应，一点点侵蚀我们的环境，这是不可持续的。中国面临的另一个问题是社会快速老龄化，这是过去政策演变带来的结果，所以必须推出新政策应对这一问题，也就意味着要改革。
+
+		        我相信，如果中国进一步扩大开放，其自身会得以提升，同时，也会改善世界经济，从这个角度讲，会改变整个世界。中国可以进一步向外国的经济参与者开放，他们很有兴趣参与进来。另外，在当前阶段，我认为对外开放永远不会造成损失，向着这个方向努力，将受益匪浅。
+
+		        中国网：那么您如何看待中国改革开放后中瑞两国的关系？
+
+		        戴尚贤：我一直在回顾中国对外开放前两国关系情况，因为中国的对外开放进一步加强了两国关系。中国在国际社会中还未举足轻重的时候，中瑞双边关系就已经建立起来并发展到了很高的水平。从一开始，我们就看好中国。瑞士在1950年1月就承认了新中国，也是最早一批承认新中国的国家之一。自那之后，我们就与中国开始交往。所以中国开始对外开放时，瑞士企业、瑞士人民以及瑞士决策者率先参与也就不足为奇了。
+
+		        瑞士企业是西方企业当中第一个在中国成立合资企业的。中瑞建立起相互尊重、相互看重的双边关系之时，中国经济尚未吸引全球目光，这说明经济前景并不是我们对中国产生兴趣的唯一原因。（中国）开始对外开放时，我们已经准备好了，后来和各方一起参与其中，对中国对外开放做出了贡献。瑞士是最早承认中国（完全）市场经济地位的欧洲国家。后来在我们传统友好的关系中，也创下了许多第一或者接近第一的记录。所以我相信如果我们保持这种密切友好的精神，我们必将在过去成就的基础上，继续受益。
+
 			</div>
 		</div>
 	</div>
@@ -49,11 +71,24 @@
 	var oBtn = document.getElementById('btn');
 	var oWrap = document.getElementById('wrap');
 	var oBox = document.getElementById('box');
-	var disY = 0;
+	var oTxt = document.getElementById('txt');
+	var oContent = document.getElementById('content');
+	var disY = 0 , t = 0;
 	oBtn.onmousedown = function(ev){
 		disY = ev.clientY - oBtn.offsetTop;
 		document.onmousemove = function(ev){
-			var t = ev.clientY - disY;
+			t = ev.clientY - disY;
+			hand();
+		}
+		oBox.onmousewheel = function(ev){
+			if (ev.wheelDelta > 0) {
+				t -= 10;
+			}else{
+				t += 10;
+			}
+			hand();
+		}
+		function hand(){
 			if (t < 0) {
 				t = 0;
 			}else if( t > oWrap.offsetHeight - oBtn.offsetHeight){
@@ -63,13 +98,8 @@
 
 
 			oBtn.style.top = t +'px';
-
-			oBox.style.width = 100 + 500  * scale + 'px';
-			oBox.style.height = 100 + 500  * scale + 'px';
-			oBox.style.opacity = 0 + 1 * scale;
+			oTxt.style.top = -(oTxt.offsetHeight - oContent.offsetHeight) * scale +'px';
 		}
-
-	
 		document.onmouseup = function(){
 			document.onmousemove = null;
 			document.onmousedown = null;

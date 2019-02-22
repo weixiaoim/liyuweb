@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>碰撞测试</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 100px;
+			height: 100px;
+			background-color: blue;
+		}
+		#box2{
+			position: absolute;
+			top: 200px;
+			left: 200px;
+			width: 400px;
+			height: 400px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+	<div id="box2"></div>
+</body>
+<script type="text/javascript">
+	var oBox = document.getElementById('box');
+	var oBox2 = document.getElementById('box2');
+	var disX = 0 , disY = 0;
+	oBox.onmousedown = function(ev){
+		disX = ev.clientX - oBox.offsetLeft;
+		disY = ev.clientY - oBox.offsetTop;
+		document.onmousemove = function(ev){
+			oBox.style.left = ev.clientX - disX +'px';
+			oBox.style.top = ev.clientY - disY +'px';
+
+			if (oBox.offsetLeft + oBox.offsetWidth >oBox2.offsetLeft 
+			&& oBox.offsetTop + oBox.offsetHeight >oBox2.offsetTop  
+			&& oBox2.offsetTop + oBox2.offsetHeight >oBox.offsetTop 
+			&& oBox2.offsetLeft + oBox2.offsetWidth >oBox.offsetLeft) {
+				oBox2.style.backgroundColor = 'yellow';
+			}else{
+				oBox2.style.backgroundColor = 'red';
+			}
+		}
+
+	
+		document.onmouseup = function(){
+			document.onmousemove = null;
+			document.onmousedown = null;
+		}
+	}
+</script>
+</html>

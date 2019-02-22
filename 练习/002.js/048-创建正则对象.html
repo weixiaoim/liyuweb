@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>创建正则对象</title>
+	<script>
+		var str = 'abc abd abn';
+
+		var reg1 = new RegExp('a','g');
+		var reg2 = new RegExp('b','g');
+
+		console.log(str.replace(reg1,'*'));
+
+		console.log(str.replace(reg2,'+'));
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

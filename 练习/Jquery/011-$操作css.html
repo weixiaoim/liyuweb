@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>操作css</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box1{
+			width: 100px;
+			height: 100px;
+			background-color: blue;
+		}
+		.box2{
+			width: 150px;
+			height: 150px;
+			background-color: purple;
+		}
+	</style>
+</head>
+<body>
+	<div class="box1"></div>
+	<div class="box2"></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		// console.log($('div').css('width'));
+		// console.log($('div').css('height'));
+		// console.log($('div').css('width','300px'))
+		// console.log($('div').css('width','300px').css('height','300px'))
+		console.log($('div').css({
+			width : '400px',
+			height : '400px'
+		}))
+	})
+</script>
+</html>
