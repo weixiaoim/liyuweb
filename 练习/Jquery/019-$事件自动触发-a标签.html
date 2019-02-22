@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>阻止默认行为</title>
+</head>
+<body>
+	<a href="file:///C:/Users/liyuphp/chuizi/chuizi.html">
+		<span>go</span>
+	</a>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('span').click(function(){
+			alert('aaa')
+		})
+		$('a').trigger('click')
+		// $('span').triggerHandler('click')
+	})
+</script>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件的绑定和移除</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			margin-top: 20px;
+			border: 1px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<button>移除</button>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		// 事件绑定
+		function fn(){
+			alert('111')
+		}
+		$('div').click(function(){
+			alert('1')
+		});
+		$('div').on('mouseover',function(){
+			alert('2')
+		})
+		$('div').click(fn)
+
+		// 事件移除
+		$('button').click(function(){
+			// $('div').off()
+			// $('div').off('mouseover')
+			$('div').off('click',fn)
+		});
+
+	})
+</script>
+</html>
