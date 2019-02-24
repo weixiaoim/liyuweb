@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>动画方法-停止动画</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: purple;
+			margin-top: 20px;
+		}
+	</style>
+</head>
+<body>
+	<button id="btn1">开始</button>
+	<button id="btn2">停止</button>
+	<div></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('#btn1').on('click',function(){
+			$('div').animate({width:200},2000)
+			$('div').animate({height:200},2000)
+			$('div').animate({opacity:0.5},2000)
+		})
+		$('#btn2').on('click',function(){
+			// $('div').stop(false,false)  //只停止当前的  后面继续进行
+			$('div').stop(true,false)   //停止当前的   后面不在进行
+			// $('div').stop(false,true)   //当前直接结束  后面继续进行
+			// $('div').stop(true,true)    //当前直接结束    后面不在进行
+		})
+	})
+</script>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>替换节点</title>
+</head>
+<body>
+	<button>替换1</button>
+	<button>替换2</button>
+	<button>替换3</button>
+	<div>我是div1</div>
+	<div>我是div2</div>
+	<div>我是div3</div>
+	<div>我是div4</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('button').eq(0).on('click',function(){
+			var oH1 = $('<h1>我是新来的</h1>')
+			$('div').replaceWith(oH1)
+		})
+		$('button').eq(1).on('click',function(){
+			// var oH1 = $('<h1>我是新来的</h1>')
+			$('div').replaceWith('<h1>我是新来的</h1>')
+		})
+		$('button').eq(2).on('click',function(){
+			var oH1 = $('<h1>我是新来的</h1>')
+			oH1.replaceAll('div')
+		})
+	})
+</script>
+</html>

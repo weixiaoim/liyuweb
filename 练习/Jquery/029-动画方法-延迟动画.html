@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>动画方法-延迟动画</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: purple;
+			margin-top: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('div').animate({width:200},2000).delay(1000)
+		$('div').animate({height:200},2000)
+		$('div').animate({opacity:0.5},2000)
+	})
+</script>
+</html>
