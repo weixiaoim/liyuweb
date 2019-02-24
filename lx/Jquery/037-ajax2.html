@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ajax2-封装接口</title>
+</head>
+<body>
+	<button>获取1</button>
+	<button>获取2</button>
+	<button>获取3</button>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('button').eq(0).on('click',function(){
+			$.get('036.data.json',{name:'wy',age:'18'},function(data){
+				console.log(data)
+			},'text')
+		});
+		$('button').eq(1).on('click',function(){
+			$.post('036.data.json',{name:'wyk',age:'88'},function(data){
+				console.log(data)
+			},'text')
+		});
+		$('button').eq(2).on('click',function(){
+			$.getJSON('036.data.json',function(data){
+				console.log(data)
+			},)
+		});
+	})
+</script>
+</html>

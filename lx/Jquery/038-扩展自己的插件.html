@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>扩展自己的插件</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 200px;
+			height: 200px;
+			border: 1px solid #000;
+			margin-top: 20px;
+		}
+	</style>
+</head>
+<body>
+	<button>点击</button>
+	<div>div1</div>
+	<div>div2</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$.fn.setColor = function(options){
+		var DEFAULTS ={color:'blue'};
+		var options = $.extend({},DEFAULTS,options);
+		return this.each(function(){
+			this.style.color = options.color;
+		});
+	};
+</script>
+<script>
+	$(function(){
+		$('button').on('click',function(){
+			$('div').setColor({}).animate({width:400});
+			// $('div').setColor({color:'purple'}).animate({width:400})
+		})
+	})
+</script>
+</html>

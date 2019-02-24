@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>035-ajax.html</title>
+</head>
+<body>
+	<button>按钮</button>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('button').on('click',function(){
+			$.ajax({
+				url:'036-data.json',//请求的地址
+				type:'get',//指定请求的方法，默认是GET
+				data:{name:'wyk',age:18},//发送到服务器的数据，字符串键值对或者对象
+				dataType:'json',//返回数据的类型，可以是xml json script text html,默认是text
+				success:function(data,statusMsg,jqXHR){
+					console.log("1:::")
+					console.log(data)
+					console.log(statusMsg)
+					console.log(jqXHR)
+				},//请求成功后的回调函数
+				error:function(jqXHR,statusMsg){
+					console.log("2:::")
+					console.log(jqXHR)
+					console.log(statusMsg)
+				},//请求失败后的回调函数
+				complete:function(jqXHR,statusMsg){
+					console.log("3:::")
+					console.log(jqXHR)
+					console.log(statusMsg)
+				},//请求完成后的回调函数
+				timeout:3000,//设置请求超时的时间，单位为毫秒
+				statusCode:{304:function(){
+					console.log('555:cuocuocuo')
+				}},//设置不同状态码的回调函数
+				headers:{test:'test'}//设置请求头
+			})
+		})
+	})
+</script>
+</html>

@@ -46,7 +46,12 @@ var server = http.createServer(function(req,res){
 	}
 
 });
-
+/*
+局域网测试
+server.listen(3000,'10.214.59.98',function(){
+	console.log("Sever is running at http://10.214.59.98:3000");
+})
+*/
 server.listen(3000,'127.0.0.1',function(){
 	console.log("Sever is running at http://127.0.0.1:3000");
 })
