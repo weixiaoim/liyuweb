@@ -23,19 +23,28 @@
 </body>
 <script src="js/jquery-1.12.4.js"></script>
 <script>
-	$.fn.setColor = function(options){
-		var DEFAULTS ={color:'blue'};
-		var options = $.extend({},DEFAULTS,options);
-		return this.each(function(){
-			this.style.color = options.color;
-		});
-	};
+	// $.fn.setColor = function(options){
+	// 	var DEFAULTS ={color:'blue'};
+	// 	var options = $.extend({},DEFAULTS,options);
+	// 	return this.each(function(){
+	// 		this.style.color = options.color;
+	// 	});
+	// };
+	$.fn.extend({
+		setColor:function(options){
+			var DEFAULTS = {color:'blue'}
+			var options = $.extend({},DEFAULTS,options);
+			return this.each(function(){
+				this.style.color = options.color;
+			})
+		}
+	})
 </script>
 <script>
 	$(function(){
 		$('button').on('click',function(){
-			$('div').setColor({}).animate({width:400});
-			// $('div').setColor({color:'purple'}).animate({width:400})
+			// $('div').setColor({}).animate({width:400});
+			$('div').setColor({color:'purple'}).animate({width:400})
 		})
 	})
 </script>
