@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery原理解析-extend方法</title>
+</head>
+<body>
+	<div id="box">div1</div>
+	<div>div2</div>
+	<div>div3</div>
+</body>
+<!-- <script src="js/jquery-1.12.4.js"></script> -->
+<script src="js/wquery-1.00.0.js"></script>
+<script>
+	function kQuery(){
+
+	}
+
+	kQuery.prototype.extend = function(options){
+		for(key in options){
+			kQuery.prototype[key] = options[key]
+		}
+	}
+	kQuery.poototype.extend({
+		text1:function(){
+
+		}
+	})
+</script>
+</html>

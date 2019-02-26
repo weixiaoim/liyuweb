@@ -1,0 +1,28 @@
+body{
+	font-size: 12px;
+}
+.container{
+	width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.clearfix:after{
+	display: block;
+	content: "";
+	clear: both;
+	height: 0;
+	visibility: hidden;
+}
+.clearfix{
+	*zoom: 1;
+}
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+a{
+	text-decoration: none;
+	color: #4d555d;
+}
