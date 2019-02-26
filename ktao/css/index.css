@@ -1,26 +1,49 @@
 /*开始导航*/
+	.nav-side{
+		height: 44px;
+		background: #f3f5f7;
+	}
+	.nav-login{
+		color: #ea675a;
+	}
+	.nav-left li{
+		height: 44px;
+		line-height: 44px;
+		margin-right: 5px;
+	}
+	.dropdown-toggle{
+		display: block;
+		height: 44px;
+		line-height: 44px;
+	}
 /*结束导航*/
 
 /*头部开始导航*/
+	.header{
+		height: 100px;
+		background: yellow;
+	}
 /*头部结束导航*/
 
 /*焦点开始导航*/
+	.focus{
+		height: 500px;
+		background: purple;
+	}
 /*焦点结束导航*/
 
 /*热销开始导航*/
+	.todays{
+		height: 100px;
+		background: blue;
+	}
 /*热销结束导航*/
 
-/*楼层1开始导航*/
-/*楼层1结束导航*/
+/*楼层开始导航*/
+	.floor{
+		height: 200px;
+		background: pink;
+	}
+/*楼层结束导航*/
 
-/*楼层2开始导航*/
-/*楼层2结束导航*/
 
-/*楼层3开始导航*/
-/*楼层3结束导航*/
-
-/*楼层4开始导航*/
-/*楼层4结束导航*/
-
-/*楼层5开始导航*/
-/*楼层5结束导航*/
