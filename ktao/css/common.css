@@ -26,6 +26,9 @@ a{
 	text-decoration: none;
 	color: #4d555d;
 }
-.link:hovers{
-	clear: #ea675a;
+.link:hover{
+	color: #ea675a;
+}
+.transition{
+	transition: all 0.5s;
 }

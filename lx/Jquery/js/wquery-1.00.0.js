@@ -77,24 +77,30 @@
 		}
 	}
 
-	wQuery.isFunction = function(str){
+	wQuery.fn.extend = wQuery.extend = function(options){
+		for(key in options){
+			this[key] = options[key]//wQuery.prototype.text1.. = function...
+		}
+	}
+	wQuery.extend({
+		isFunction : function(str){
 	    return typeof str == 'function';
-	}
-
-	wQuery.isString = function(str){
+		},
+		isString : function(str){
 		return typeof str == 'string';
-	}
+		},
+		isHtml : function(str){
+			return /<[^<>]+>/.test(str);
+		},
+		isArray : function(str){
+			return typeof str == 'object' && length in str;
+		},
+		isNumber : function(str){
+			return typeof str =='number';
+		}
+	});
 
-	wQuery.isHtml = function(str){
-		return /<[^<>]+>/.test(str);
-	}
-	wQuery.isArray = function(str){
-		return typeof str == 'object' && length in str;
-	}
-	wQuery.isNumber = function(str){
-		return typeof str =='number';
-	}
-
+	
 	wQuery.fn.init.prototype = wQuery.fn;
 
 	window.wQuery = window.$ = wQuery;

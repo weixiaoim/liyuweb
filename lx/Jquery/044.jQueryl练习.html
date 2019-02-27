@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button>li0</button>
+	<button>li2</button>
+	<button>li3</button>
+	<button>li4</button>
+	<button>li5</button>
+	<button>li6</button>
+	<div class="box">
+		<ul class="list">
+			<li class="item1">li1</li>
+			<li class="item3">li3</li>
+			<li class="item7">li7</li>
+			<li class="item5">li5</li>
+		</ul>
+	</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('button').eq(0).on('click',function(){
+			var oLi = $('<li>li0</li>')
+			$('ul').prepend(oLi)
+		})
+		$('button').eq(1).on('click',function(){
+			var oLi1 = $('<li>li2</li>')
+			$('.item3').replaceWith(oLi1);
+		})
+		$('button').eq(2).on('click',function(){
+			var oLi2 = $('<li>li3</li>')
+			$('.item7').replaceWith(oLi2);
+		})
+		$('button').eq(3).on('click',function(){
+			var oLi3 = $('<li>li4</li>')
+			$('.item5').replaceWith(oLi3);
+		})
+		$('button').eq(4).on('click',function(){
+			var oLi = $('<li>li5</li>')
+			$('ul').append(oLi);
+		})
+		$('button').eq(5).on('click',function(){
+			var oLi = $('<li>li6</li>')
+			$('ul').append(oLi);
+		})
+	})
+</script>
+</html>

@@ -16,15 +16,23 @@
 
 	}
 
-	kQuery.prototype.extend = function(options){
+	kQuery.prototype.extend = kQuery.extend = function(options){
 		for(key in options){
 			kQuery.prototype[key] = options[key]
 		}
 	}
-	kQuery.poototype.extend({
+	kQuery.prototype.extend({
 		text1:function(){
-
+			console.log('text1');
+		}
+	});
+	kQuery.prototype.extend({
+		text2:function(){
+			console.log('text2');
 		}
 	})
+	var k = new kQuery();
+	k.text1();
+	k.text2();
 </script>
 </html>

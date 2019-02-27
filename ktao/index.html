@@ -1,14 +1,15 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>跨淘</title>
 	<link rel="stylesheet" href="css/reset.css">
-	<link rel="stylesheet" href="css/font-awesome.css">
 	<link rel="stylesheet" href="css/common.css">
 	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="css/fontawesome-all.css">
 </head>
-<body>	<!-- 开始导航 -->
+<body>
+<!-- 开始导航 -->
 <div class="nav-side">
 	<div class="container">
 		<ul class="nav-left fl">
@@ -23,17 +24,50 @@
 			</li>
 		</ul>
 		<ul class="nav-right fr">
-			<li class="dropdown">
+			<li class="dropdown" data-active='menu'>
 				<a href="javascript:;" class="dropdown-toggle link ">
 					我的跨淘
-					<i class="fa">&#xf107;</i>
+					<i class="fa dropdown-arrow transition">&#xf107;</i>
 				</a>
-				<ul>
+				<ul class="dropdown-layer">
 					<li>
-						<a href="javascript:;" class="metu-item">已买到的宝贝</a>
+						<a href="javascript:;" class="menu-item">已买到的宝贝</a>
 					</li>
 					<li>
-						<a href="javascript:;" class="metu-item">我的足迹</a>
+						<a href="javascript:;" class="menu-item">我的足迹</a>
+					</li>
+				</ul>
+			</li>
+			<li class="dropdown" data-active='menu'>
+				<a href="javascript:;" class="dropdown-toggle link ">
+					我的跨淘
+					<i class="fa dropdown-arrow transition">&#xf107;</i>
+				</a>
+				<ul class="dropdown-layer">
+					<li>
+						<a href="javascript:;" class="menu-item">已买到的宝贝</a>
+					</li>
+					<li>
+						<a href="javascript:;" class="menu-item">我的足迹</a>
+					</li>
+				</ul>
+			</li>
+			<li class="dropdown" data-active='menu'>
+				<a href="javascript:;" class="dropdown-toggle link ">
+					商品分类
+				</a>
+			</li>
+			<li class="dropdown" data-active='menu'>
+				<a href="javascript:;" class="dropdown-toggle link ">
+					买家中心
+					<i class="fa dropdown-arrow transition">&#xf107;</i>
+				</a>
+				<ul class="dropdown-layer">
+					<li>
+						<a href="javascript:;" class="menu-item">免费开店</a>
+					</li>
+					<li>
+						<a href="javascript:;" class="menu-item">已卖出的宝贝</a>
 					</li>
 				</ul>
 			</li>
