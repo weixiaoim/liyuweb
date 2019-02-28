@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>046.ajax.html</title>
+</head>
+<body>
+	<button>点击</button>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		// $('button').on('click',function(){
+		// 	$.get('046.data.json',function(data){
+		// 		console.log(data);
+		// 	},'json');
+		// });
+		$('button').on('click',function(){
+			$.ajax({
+				url:'046.data.json',
+				type:'GET',
+				dataType:'json',
+				success:function(data,statusMsg,jqXHR){
+					console.log(data);
+				}
+			});	
+		})
+	})
+</script>
+</html>
