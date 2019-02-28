@@ -22,6 +22,8 @@
 		height: 44px;
 		line-height: 44px;
 		padding: 0 5px;
+		border-left: 1px solid #f3f5f7;
+		border-right: 1px solid #f3f5f7;
 	}
 	.dropdown-layer{
 		display: none;
@@ -42,8 +44,6 @@
 		background: #f3f5f7;
 	}
 	.dropdown:hover .dropdown-toggle}{
-		border-left: 1px solid #f3f5f7;
-		border-right: 1px solid #f3f5f7;
 		background: #fff;
 	}
 	.dropdown:hover .dropdown-arrow{
