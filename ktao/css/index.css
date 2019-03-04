@@ -49,9 +49,9 @@
 	.dropdown:hover .dropdown-arrow{
 		transform: rotate(180deg);
 	}
-	.dropdown:hover .dropdown-layer{
+/*	.dropdown:hover .dropdown-layer{
 		display: block;
-	}
+	}*/
 /*结束导航*/
 
 /*头部开始导航*/

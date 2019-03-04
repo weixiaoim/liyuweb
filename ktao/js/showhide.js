@@ -1,3 +1,9 @@
+/*
+* @Author: TomChen
+* @Date:   2019-02-27 19:40:19
+* @Last Modified by:   TomChen
+* @Last Modified time: 2019-02-27 20:19:36
+*/
 ;(function($){
 	function init($elem,hiddenCb){
 		if($elem.is(":hidden")){
@@ -41,29 +47,29 @@
 	var js = {
 		fade:{
 			init:function($elem){
-				js_init($elem);
+				js._init($elem);
 			},
 			show:function($elem){
-				js_show($elem,'fadeIn');
+				js._show($elem,'fadeIn');
 			},
 			hide:function($elem){
-				js_hide($elem,'fadeOut');
+				js._hide($elem,'fadeOut');
 			}		
 		},
 		slideDownUp:{
 			init:function($elem){
-				js_init($elem);
+				js._init($elem);
 			},
 			show:function($elem){
-				js_show($elem,'slideDown');
+				js._show($elem,'slideDown');
 			},
 			hide:function($elem){
-				js_hide($elem,'slideUp');
+				js._hide($elem,'slideUp');
 			}			
 		},
 		slideLeftRight:{
 			init:function($elem){
-				js_customInit($elem,{
+				js._customInit($elem,{
 					width:0,
 					paddingLeft:0,
 					paddingRight:0,
@@ -72,10 +78,10 @@
 				});		
 			},
 			show:function($elem){
-				js_customShow($elem)
+				js._customShow($elem)
 			},
 			hide:function($elem){
-				js_customHide($elem,{
+				js._customHide($elem,{
 					width:0,
 					paddingLeft:0,
 					paddingRight:0,
@@ -86,7 +92,7 @@
 		},
 		fadeSlideLeftRight:{
 			init:function($elem){
-				js_customInit($elem,{
+				js._customInit($elem,{
 					width:0,
 					paddingLeft:0,
 					paddingRight:0,
@@ -96,10 +102,10 @@
 				});		
 			},
 			show:function($elem){
-				js_customShow($elem)
+				js._customShow($elem)
 			},
 			hide:function($elem){
-				js_customHide($elem,{
+				js._customHide($elem,{
 					width:0,
 					paddingLeft:0,
 					paddingRight:0,
@@ -110,11 +116,11 @@
 			}
 		},	
 	}
-	js_init = function($elem){
+	js._init = function($elem){
 		$elem.removeClass('transition');
 		init($elem);	
 	}
-	js_show = function($elem,mode){
+	js._show = function($elem,mode){
 		show($elem,function(){
 			$elem.stop()
 			[mode](function(){
@@ -122,7 +128,7 @@
 			});				
 		})	
 	}
-	js_hide = function($elem,mode){
+	js._hide = function($elem,mode){
 		hide($elem,function(){
 			$elem.stop()
 			[mode](function(){
@@ -130,7 +136,7 @@
 			});				
 		})		
 	}
-	js_customInit = function($elem,options){
+	js._customInit = function($elem,options){
 		$elem.removeClass('transition');
 		//1.保存原始值
 		var styles = {};
@@ -146,7 +152,7 @@
 			$elem.css(options)
 		});		
 	}
-	js_customShow = function($elem){
+	js._customShow = function($elem){
 		show($elem,function(){
 			$elem.show();//display=block
 			$elem.stop()
@@ -155,7 +161,7 @@
 			});		
 		})	
 	}
-	js_customHide = function($elem,options){
+	js._customHide = function($elem,options){
 		hide($elem,function(){
 			$elem.stop()
 			.animate(options,function(){
@@ -165,12 +171,55 @@
 		})	
 	}
 
+	function getShowHide($elem,options){
+		var showHideFn = slient;
+		if(options.js){
+			showHideFn = js[options.mode];
+		}
 
+		showHideFn.init($elem);
+
+		return {
+			show:showHideFn.show,
+			hide:showHideFn.hide
+		}
+	}
+
+	var DEFAULTS = {
+		js:true,
+		mode:'fade'
+	}
 	//注册插件
 	$.fn.extend({
-		showHide:function(){
-			
+		showHide:function(options){
+			//console.log(this);
+			//1.隐式迭代
+			return this.each(function(){
+				// console.log(this) DOM对象
+				var $elem = $(this);
+				
+				var showHideObj = $elem.data('showHideObj');
+
+				if(!showHideObj){//单例模式
+					options = $.extend({},DEFAULTS,options)
+					showHideObj = getShowHide($elem,options);
+					$elem.data('showHideObj',showHideObj);					
+				}
+
+				if(typeof showHideObj[options] == 'function'){
+					showHideObj[options]($elem);
+				}
+			});
 		}
-	})
+	});
+
+
+
+
+
+
+
+
+
 
 })(jQuery);
