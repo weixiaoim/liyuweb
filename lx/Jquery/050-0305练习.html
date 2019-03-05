@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>0305练习</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{	
+			margin-top: 50px;
+			width: 100px;
+			height: 100px;
+			background-color: blue;
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+	<button>点我</button>
+	<div></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script src="js/050.lx.js"></script>
+<script>
+	$(function(){
+		$('button').on('click',function(){
+			$('div').setBox();
+		})
+	})
+</script>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>0305练习</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{	
+			margin-top: 50px;
+			width: 100px;
+			height: 100px;
+			background-color: blue;
+			display: none;
+		}
+		.box1{
+			position: absolute;
+			bottom: 0;
+			right: 0;
+		}
+		.box2{
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	</style>
+</head>
+<body>
+	<button>点我</button>
+	<div class="box2" id="box"></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('button').on('click',function(){
+			$('div').show();
+		})
+
+
+
+		$.fn.extend({
+			setCss:function(obj1,obj2){
+				return this.each(function($nDiv){
+					var $nDiv = $(this)
+					if (!obj2) {
+						console.log($nDiv.css(obj1));
+					}else{
+						console.log($nDiv.css(obj1,obj2));
+					}
+				})
+			}
+		})
+		// console.log($left)
+		// if ( = 0) {
+
+		// }
+	// 	$('div').on('click',function(){
+
+	// 	})
+	})
+</script>
+<script>
+	var $nDiv = $('div')
+	$('button').on('click',function(){
+		// $nDiv.setCss('backgroundColor','red')
+		// $nDiv.setCss({width:200})
+		$nDiv.setCss({height:200});
+		
+	})
+	$('div').on('click',function(){
+		$('div').toggleClass('box1 box2');
+	})
+</script>
+</html>
