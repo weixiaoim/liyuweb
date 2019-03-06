@@ -1,21 +1,5 @@
 ;(function($){
 
-var cache = {
-	data:{},
-	count:0,
-	addData:function(key,val){
-		this.data[key] = val;
-		this.count++;
-	},
-	getData:function(key){
-		return this.data[key];
-	}
-}
-
-
-
-
-
 function Search($elem,options){
 	//1.罗列属性
 	this.$elem = $elem;
@@ -24,9 +8,8 @@ function Search($elem,options){
 	this.$searchInput = $elem.find('.search-input');
 	this.$searchForm = $elem.find('.search-form');
 	this.$searchLayer = $elem.find('.search-layer');
-	this.timer = 0;
+
 	this.$isLoaded = false;
-	this.jqXHR = null;
 	//2.初始化
 	this.init();
 	if(this.options.autocompelete){
@@ -52,17 +35,7 @@ Search.prototype = {
 		//1.初始化显示隐藏
 		this.$searchLayer.showHide(this.options)
 		//2.监听输入框input事件
-		this.$searchInput.on('input',function(){
-			//防止快速输入多次请求
-			if (this.options.getDataDelay) {
-				clearTimeout(this.timer);
-				this.timer = setTimeout(function(){
-					this.getData();
-				}.bind(this),this.options.getDataDelay)
-			}else{
-				this.getData();
-			}
-		}.bind(this));
+		this.$searchInput.on('input',$.proxy(this.getData,this));
 		//3.点击页面其他地方隐藏下拉框
 		$(document).on('click',$.proxy(this.hideLayer,this));
 		//4.获取焦点的时候显示下拉框
@@ -73,7 +46,7 @@ Search.prototype = {
 		})
 	},
 	getData:function(){
-		console.log('will get data...');
+		console.log('laia kuaihuoa ');
 		// console.log(this.options.url)
 		var inputVal = this.getInputVal();
 		if(inputVal == ''){
@@ -81,33 +54,35 @@ Search.prototype = {
 			this.hideLayer();
 			return;
 		}
-		// console.log('cache',cache);
-		if (cache.getData(inputVal)) {
-			this.$elem.trigger('getData',[cache.getData(inputVal)])
-			return;
-		}
-		console.log('will trigger ajax...');
 
-		if(this.jqXHR){
-			this.jqXHR.abort();
-		}
-		this.jqXHR = $.ajax({
+		$.ajax({
 			url:this.options.url + this.getInputVal(),
 			dataType:"jsonp",
 			jsonp:"callback",
 		})
 		.done(function(data){
-			this.$elem.trigger('getData',[data])
-			cache.addData(inputVal,data);
+			// console.log(data);
+			//1.根据数据生成html
+			var html = '';
+			for(var i = 0;i<data.result.length;i++){
+				html += '<li class="search-item">'+data.result[i][0]+'</li>'
+			}
+			if(html == ''){
+				this.appendHtml(html);
+			}
+			//2.加载html到下拉层
+			this.appendHtml(html);
+			if(html == ''){
+				this.hideLayer();
+			}else{
+				this.showLayer();
+			}
 		}.bind(this))
 		.fail(function(err){
-			this.$elem.trigger('getNoData')
-			// this.appendHtml('');
-			// this.hideLayer();
+			this.appendHtml('');
+			this.hideLayer();
 		}.bind(this))
-		.always(function(){
-			this.jqXHR = null;
-		}.bind(this))
+
 	},
 	showLayer:function(){
 		if(!this.$isLoaded) return;
@@ -126,13 +101,12 @@ Search.DEFAULTS = {
 	autocompelete:true,
 	url:"https://suggest.taobao.com/sug?code=utf-8&q=",
 	// url:"http://127.0.0.1:3001/?&q=",
-	mode:'slideDownUp',
-	getDataDelay:200
+	mode:'slideDownUp'
 
 }
 
 $.fn.extend({
-	search:function(options,val){
+	search:function(options){
 		return this.each(function(){
 			var $elem = $(this);
 			var search = $elem.data('search');
@@ -142,7 +116,7 @@ $.fn.extend({
 				$elem.data('search',search);				
 			}
 			if(typeof search[options] == 'function'){
-				search[options](val);
+				search[options]();
 			}
 
 		});

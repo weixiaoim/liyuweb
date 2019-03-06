@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>0306练习</title>
+</head>
+<body>
+	
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		arr = [1,3,5,3,7,1,9,0]
+		//去重
+		function uniqueArray(obj){
+			var $arr = [];
+			for(var i =0; i < obj.length; i++ ){
+				if ($arr.indexOf(obj[i]) ==-1){
+					$arr.push(obj[i]);
+				}
+			}
+			return $arr;
+		}
+		var arr1=uniqueArray(arr);
+
+		//去重
+		// var newArr  = arr.filter(function(value,index){
+		// 	return index != 4
+		// })
+		// console.log(newArr);
+		console.log(arr);
+		console.log(arr1);
+		//排序
+		arr1.sort(function(n1,n2){
+			return n1 - n2;
+		})
+		console.log(arr1);
+	})
+</script>
+</html>

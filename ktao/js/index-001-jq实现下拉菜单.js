@@ -1,4 +1,3 @@
-
 ;(function($){
 	$('.dropdown')
 	.hover(function(){

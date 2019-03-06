@@ -1,21 +1,5 @@
 ;(function($){
 
-var cache = {
-	data:{},
-	count:0,
-	addData:function(key,val){
-		this.data[key] = val;
-		this.count++;
-	},
-	getData:function(key){
-		return this.data[key];
-	}
-}
-
-
-
-
-
 function Search($elem,options){
 	//1.罗列属性
 	this.$elem = $elem;
@@ -73,7 +57,7 @@ Search.prototype = {
 		})
 	},
 	getData:function(){
-		console.log('will get data...');
+		console.log('laia kuaihuoa ');
 		// console.log(this.options.url)
 		var inputVal = this.getInputVal();
 		if(inputVal == ''){
@@ -81,13 +65,6 @@ Search.prototype = {
 			this.hideLayer();
 			return;
 		}
-		// console.log('cache',cache);
-		if (cache.getData(inputVal)) {
-			this.$elem.trigger('getData',[cache.getData(inputVal)])
-			return;
-		}
-		console.log('will trigger ajax...');
-
 		if(this.jqXHR){
 			this.jqXHR.abort();
 		}
@@ -97,8 +74,21 @@ Search.prototype = {
 			jsonp:"callback",
 		})
 		.done(function(data){
+			// console.log(data);
+			//1.根据数据生成html
+			// var html = '';
+			// for(var i = 0;i<data.result.length;i++){
+			// 	html += '<li class="search-item">'+data.result[i][0]+'</li>'
+			// }
+
+			// //2.加载html到下拉层
+			// this.appendHtml(html);
+			// if(html == ''){
+			// 	this.hideLayer();
+			// }else{
+			// 	this.showLayer();
+			// }
 			this.$elem.trigger('getData',[data])
-			cache.addData(inputVal,data);
 		}.bind(this))
 		.fail(function(err){
 			this.$elem.trigger('getNoData')
