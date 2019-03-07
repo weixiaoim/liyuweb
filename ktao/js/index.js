@@ -1,8 +1,7 @@
 ;(function($){
-	var $menuDropdown = $('.dropdown')
-	$menuDropdown.dropdown({
-		
-	});
+	//顶部下拉菜单
+	var $menuDropdown = $('.nav-side .dropdown')
+	
 	$menuDropdown.on('dropdown-show',function(ev){
 		var $elem = $(this);
 		var loadUrl = $elem.data('load');
@@ -23,7 +22,10 @@
 		
 		})
 	});
-
+	$menuDropdown.dropdown({
+		delay:200,
+	});
+	//搜索框
 	var $search = $('.header .search');
 
 	$search.on('getData',function(ev,data){
@@ -52,6 +54,12 @@
 
 	$search.search();
 
+	//分类列表
+	var $categoryDropdown = $('.category .dropdown')
 
-
+	$categoryDropdown.dropdown({
+		delay:200,
+		js:true,
+		mode:'slideLeftRight'
+	});
 })(jQuery);
