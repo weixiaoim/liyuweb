@@ -17,9 +17,6 @@ var server = http.createServer(function(req,res){
 	console.log("cookie::",req.headers.cookie);
 	
 	res.setHeader('Set-Cookie',["username=wyk;Max-Age=10"]);
-	var oData = new Data();
-	Data.setData(oData,getData(2019-03-07 19:59) + 14);
-	document.cookie = 'username=wyk;expires='+oData;
 	
 	if(urlStr == '/favicon.ico'){
 		res.end('favicon.ico');
