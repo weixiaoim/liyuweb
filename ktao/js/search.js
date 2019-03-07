@@ -29,8 +29,8 @@ function Search($elem,options){
 	this.jqXHR = null;
 	//2.初始化
 	this.init();
-	if(this.options.autocompelete){
-		this.autocompelete();
+	if(this.options.autocomplete){
+		this.autocomplete();
 	}
 }
 Search.prototype = {
@@ -48,7 +48,7 @@ Search.prototype = {
 	getInputVal:function(){
 		return $.trim(this.$searchInput.val())
 	},
-	autocompelete:function(){
+	autocomplete:function(){
 		//1.初始化显示隐藏
 		this.$searchLayer.showHide(this.options)
 		//2.监听输入框input事件
@@ -123,7 +123,7 @@ Search.prototype = {
 
 }
 Search.DEFAULTS = {
-	autocompelete:true,
+	autocomplete:true,
 	url:"https://suggest.taobao.com/sug?code=utf-8&q=",
 	// url:"http://127.0.0.1:3001/?&q=",
 	mode:'slideDownUp',

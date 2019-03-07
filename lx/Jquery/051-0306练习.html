@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>0306练习-对称数</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function Num(obj1,obj2){
+	for(var i=obj1;i<obj2+1;i++){
+		var symmetryNumber=+(i.toString().split("").reverse().join(""));//比较，字符串分割为数组,反转顺序，连接字符串返回
+		
+		if(symmetryNumber===i){
+			console.log(i);
+		}
+		
+	}
+}
+Num(1,10000);
+</script>
+</html>
