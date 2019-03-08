@@ -1,0 +1,30 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+@color: blue;
+@width:200px;
+@height: 200px;
+@background-color: pink;
+.box{
+	color: @color;
+	width: @width;
+	height: @height;
+	background-color:@background-color;
+}
+// .boder-radius(@r){
+// 	-webkit-border-radius:@r;
+// 	-ms-border-radius:@r;
+// 	-o-border-radius:@r;
+// 	border-radius:@r;
+// }
+.boder-radius-def(@r:20px){
+	-webkit-border-radius:@r;
+	-ms-border-radius:@r;
+	-o-border-radius:@r;
+	border-radius:@r;
+}
+.box2{
+	.box;
+	.boder-radius-def;
+}
