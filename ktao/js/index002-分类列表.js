@@ -9,19 +9,7 @@
 			typeof cb == 'function' && cb($elem,data);
 		})		
 	}
-	//加载图片
-	function loadImage(imgUrl,success,error){
-		var image = new Image();
 
-		image.onload = function(){
-			typeof success == 'function' && success(imgUrl);
-		}
-		image.onerror = function(){
-			typeof error == 'function' && error(imgUrl);
-		}
-
-		image.src = imgUrl;		
-	}
 
 
 	
