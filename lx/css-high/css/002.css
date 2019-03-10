@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.box {
+  width: 200px;
+  height: 200px;
+}
+ul li {
+  line-height: 40px;
+  width: 100%;
+}
+ul li span {
+  color: #0000ff;
+}
+ul li:hover {
+  background-color: #ffc0cb;
+}
+.box1 {
+  background-color: #ffc0cb;
+  height: 200px;
+  width: 100px;
+}

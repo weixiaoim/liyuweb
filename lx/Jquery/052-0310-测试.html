@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>0310-测试</title>
+	<style>
+		.box{
+			position: fixed;
+			width: 100px;
+			height: 100px;
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+	<button>按钮1</button>
+	<button>按钮2</button>
+	<div class="box"></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('button').eq(0).on('click',function(){
+			$('.box').css({left:100,top:100});
+		})
+		$('button').eq(1).on('click',function(){
+			$('.box').css({right:100,bottom:100});
+		})
+	})
+</script>
+</html>

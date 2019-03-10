@@ -4,4 +4,17 @@
 }
 .box {
   color: #0000ff;
+  width: 200px;
+  height: 200px;
+  background-color: #ffc0cb;
+}
+.box2 {
+  color: #0000ff;
+  width: 200px;
+  height: 200px;
+  background-color: #ffc0cb;
+  -webkit-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  border-radius: 20px;
 }
