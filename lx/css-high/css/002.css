@@ -3,8 +3,10 @@
   padding: 0;
 }
 .box {
-  width: 200px;
-  height: 200px;
+  width: 3rem;
+  height: 3rem;
+  background-color: #ff0000;
+  float: right;
 }
 ul li {
   line-height: 40px;
@@ -14,10 +16,10 @@ ul li span {
   color: #0000ff;
 }
 ul li:hover {
-  background-color: #ffc0cb;
+  background-color: #ff0000;
 }
 .box1 {
-  background-color: #ffc0cb;
+  background-color: #ff0000;
   height: 200px;
   width: 100px;
 }

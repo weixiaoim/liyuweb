@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>004-css屏幕适配.html</title>
+	<link rel="stylesheet" type="text/css" href="css/002.css">
+	<style>
+		*{
+			margin: 0;
+			padding: 0;	
+		}
+		img{
+			width: 3rem;
+			float: left;
+		}
+		h4{
+			font-size: 0.5rem;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<img src="../img/rb2.jpg" alt="">
+	<h4>我是文字</h4>
+	<div class="box"></div>
+</body>
+<script>
+	(function(wid,doc){
+		var oRoot = document.getElementsByTagName('html')[0];
+		function textSize(){
+			var iWidth = doc.body.clientWidth || doc.documentElement.clientWidth;
+			var iFontSize = iWidth / 10;
+			oRoot.style.fontSize = iFontSize + 'px';
+		}
+		
+		wid.addEventListener('resize',textSize,false);
+		wid.addEventListener('DOMContentLoaded',textSize,false);
+
+	})(window,document);
+
+</script>
+</html>
