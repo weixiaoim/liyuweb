@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>003-显示隐藏-基本-防止无效触发.html</title>
+	<title>003-显示隐藏-基本-防止无效点击.html</title>
 	<style>
 		*{
 			margin: 0;
@@ -15,7 +15,7 @@
 		#box{
 			width: 200px;
 			height: 200px;
-			background-color: blue;
+			background: red;
 		}
 	</style>
 </head>
@@ -27,48 +27,67 @@
 <script src="js/jquery-1.12.4.js"></script>
 <script>
 var slient = {
-	init : function($elem){
-		if ($elem.is(":hidden")) {
+	init:function($elem){
+		if($elem.is(":hidden")){
 			$elem.data('status','hidden');
 		}else{
 			$elem.data('status','shown');
 		}
 	},
-	show : function($elem){
-		if ($elem.data('status') == 'shown') return;
-		if ($elem.data('status') == 'show') return;
-		$elem.trigger('show');
+	show:function($elem){
+		if($elem.data('status') == 'shown') return;
+		if($elem.data('status') == 'show') return;
+		$elem.data('status','show').trigger('show');
 		$elem.show();
-		$elem.trigger('shown').data('status','show');
+		$elem.trigger('shown').data('status','shown');
 	},
-	hide : function($elem){
-		if ($elem.data('status') == 'hidden') return;
-		if ($elem.data('status') == 'hide') return;
-		$elem.trigger('hide');
+
+	hide:function($elem){
+		if($elem.data('status') == 'hidden') return;
+		if($elem.data('status') == 'hide') return;
+		$elem.data('status','hide').trigger('hide');
 		$elem.hide();
 		$elem.trigger('hidden').data('status','hidden');
 	}
+
 }
+
 var $elem = $('#box');
 
 slient.init($elem);
+
 $elem.on('show shown hide hidden',function(ev){
 	if(ev.type == 'show'){
-		console.log('show...')
+		console.log('show....');
 	}else if(ev.type == 'shown'){
-		console.log('shown...')
+		console.log('shown....');
 	}else if(ev.type == 'hide'){
-		console.log('hide...')
+		console.log('hide....')
 	}else if(ev.type == 'hidden'){
-		console.log('hidden...')
+		console.log('hidden....');
 	}
 });
-
 $('button').eq(0).on('click',function(){
 	slient.show($elem);
 });
 $('button').eq(1).on('click',function(){
 	slient.hide($elem);
 });
+
+
+
+
+
+
+
+
 </script>
+
+
+
+
+
+
+
+
 </html>

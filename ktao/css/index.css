@@ -84,11 +84,11 @@
 		background-image: url(../images/header-logo.png);
 		background-size: 150px;
 		background-repeat: no-repeat;
-		margin-top: 36px;
+		margin-top: 30px;
 	}
 	.search{
 		position: relative;
-		margin-left: 300px;
+		margin-left: 200px;
 		margin-top: 26px;
 	}
 	.search-input{

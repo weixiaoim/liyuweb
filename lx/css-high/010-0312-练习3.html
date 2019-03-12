@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>0312练习</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.father{
+			width: 1000px;
+			height: 500px;
+			border: 1px solid #000;
+			margin: 100px auto;
+			display: flex;	
+			justify-content: space-between;
+			flex-direction: row-reverse;
+		}
+		.son{
+			width: 100px;
+			height: 100px;
+			background-color: pink;
+			line-height: 100px;
+			text-align: center;
+		}
+		.son1{
+			align-self:flex-start;
+		}
+		.son2{
+			align-self:center;
+		}
+		.son3{
+			align-self:flex-end;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+			<div class=" son son1">son1</div>
+			<div class=" son son1">son2</div>
+			<div class=" son son1">son3</div>
+			<div class=" son son2">son4</div>
+			<div class=" son son2">son5</div>
+			<div class=" son son2">son6</div>
+			<div class=" son son3">son7</div>
+			<div class=" son son3">son8</div>
+			<div class=" son son3">son9</div>		
+	</div>
+</body>
+</html>

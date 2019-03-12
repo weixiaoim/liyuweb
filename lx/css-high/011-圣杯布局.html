@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>圣杯布局</title>
+	<style>	
+		*{
+			margin: 0;
+			padding: 0;	
+		}
+		body{
+			background-color: #ccc;
+			display: flex;
+			flex-wrap: column;
+		}
+		.nav{
+			background-color: red;
+		}
+		.home{
+			display: flex;
+			flex-direction: row;
+			flex-grow: 1;
+		}
+		.homeleft{
+			background-color: pink;
+		}
+		.homecenter{
+			background-color: purple;
+		}
+		.homeright{
+			lighting-color: yellow;
+		}
+		.homeleft,.homeright{
+			width: 12vh;
+		}
+		.footer{
+			background-color: blue;
+		}
+		.nav,.footer{
+			height: 12vh;
+		}
+	</style>
+</head>
+<body>
+	<div class="nav">nav</div>
+	<div class="home">
+		<div class="homeleft">homeleft</div>
+		<div class="homecenter">homecenter</div>
+		<div class="homeright">homeright</div>
+	</div>
+	<div class="footer">footer</div>
+</body>
+</html>

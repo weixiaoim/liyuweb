@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>0312练习</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.father0{
+			width: 1000px;
+			height: 500px;
+			border: 1px solid #000;
+			margin: 100px auto;
+			display: flex;	
+			flex-wrap: wrap;
+		}
+		.father{
+			display: flex;	
+			width: 1000px;
+			height: 200px;
+			/*justify-content: space-between;*/
+		}
+		.father1{	
+			flex-direction: row-reverse;
+		}
+		.father2{
+			justify-content:center;
+			flex-direction: row-reverse;
+		}
+		.father3{
+			flex-direction: row-reverse;
+			justify-content:flex-end;
+		}
+		.son{
+			width: 100px;
+			height: 100px;
+			background-color: pink;
+			line-height: 100px;
+			text-align: center;
+			margin-left: 10px;
+		}
+		.son9{
+			margin-left: 0px;
+		}
+	</style>
+</head>
+<body>
+	<div class="father0">
+		<div class="father father1">
+			<div class=" son son1">son1</div>
+			<div class=" son son2">son2</div>
+			<div class=" son son3">son3</div>
+		</div>
+		<div class="father father2">
+			<div class=" son son4">son4</div>
+			<div class=" son son5">son5</div>
+			<div class=" son son6">son6</div>
+		</div>
+		<div class="father father3">
+			<div class=" son son7">son7</div>
+			<div class=" son son8">son8</div>
+			<div class=" son son9">son9</div>
+		</div>
+			
+	</div>
+</body>
+</html>

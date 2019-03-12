@@ -15,7 +15,7 @@
 		#box{
 			width: 200px;
 			height: 200px;
-			background-color: blue;
+			background: red;
 		}
 	</style>
 </head>
@@ -27,22 +27,44 @@
 <script src="js/jquery-1.12.4.js"></script>
 <script>
 var slient = {
-	show : function($elem,cb){
+
+	show:function($elem,cb){
 		$elem.show();
 		cb();
 	},
-	hide : function($elem){
+
+	hide:function($elem){
 		$elem.hide();
 	}
+
 }
+
 var $elem = $('#box');
+
 $('button').eq(0).on('click',function(){
 	slient.show($elem,function(){
-		console.log('show...')
+		console.log('show...');
 	});
 });
+
 $('button').eq(1).on('click',function(){
 	slient.hide($elem);
 });
+
+
+
+
+
+
+
+
 </script>
+
+
+
+
+
+
+
+
 </html>
