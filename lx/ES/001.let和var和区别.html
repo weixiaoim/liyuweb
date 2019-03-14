@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>let和var区别</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	var a = 1;
+	var a = 2;
+	console.log(a);
+
+	let b = 1;
+	let b = 2;//Identifier 'b' has already been declared
+	console.log(b);
+	*/
+
+
+	/*
+	if (true) {
+		var a = 1;
+		console.log('in var',a);
+	}
+	console.log('out var',a);
+
+	if (true) {
+		let b = 1;
+		console.log('in let',b);
+	}
+	console.log('out let',b);//b is not defined
+
+	*/
+
+
+	/*
+	console.log(a);
+	var a = 1;
+
+
+	console.log(b);// b is not defined
+	let b = 1;
+	*/
+
+
+	//答案一样
+	function fn1(){
+		var a = 1;
+		function fn2(){
+			a = 2;
+			console.log('var1',a);
+		}
+		console.log('var2',a);
+		fn2();
+		console.log('var3',a);
+	}
+	fn1();
+
+	function fn3(){
+		let b = 1;
+		function fn4(){
+			b = 2;
+			console.log('let1',b);
+		}
+		console.log('let2',b);
+		fn4();
+		console.log('let3',b);
+	}
+	fn3();
+</script>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>005-结构解析-数组.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var obj = {
+		name:'sunshine',
+		age:'18'
+	}
+
+	/*
+	console.log(obj.name,obj.age);
+	*/
+
+
+	/*
+	let {name:name,age:age} = obj;
+	console.log(name,age);
+	*/
+
+
+	/*
+	let {name,age} = obj;
+	console.log(name,age);
+	*/
+
+
+
+	/*
+	let {name,age,work} = obj;
+	console.log(name,age,work);//sunshine 18 undefined
+	*/
+
+	/*
+	let {name,age,work={work : 'worker'}} = obj;
+	console.log(name,age,work);//sunshine 18 worker
+	*/
+
+	let {name,age,work={work : 'worker'}} = {name:'sunshine',age:'18',work:'teacher'};
+	console.log(name,age,work);//sunshine 18 teacher
+
+</script>
+</html>
