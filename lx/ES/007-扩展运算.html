@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>扩展运算</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var arr = [11,22];
+	function add(n1,n2){
+	    return n1+n2;
+	}
+	console.log(add(...arr));
+
+	function add(...arr){
+	    let result = 0;
+	    for(let i = 0;i<arr.length;i++){
+	        result += arr[i]
+	    }
+	    return result;
+	}
+	console.log(add(11,22));
+	let arr1 = [11,22,44,88,77];
+	//ES5
+	console.log(Math.max.apply(null,arr));
+	//ES6 用扩展运算
+	console.log(Math.max(...arr1));
+
+</script>
+</html>
