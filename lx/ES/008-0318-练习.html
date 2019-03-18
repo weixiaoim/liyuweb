@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>0318</title>
+</head>
+<body>
+	
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	let datapromise = (url) => {
+		return new Promise((resolve,reject)=>{
+			$.get(url,date=>{
+				resolve(date);
+			})
+		})
+	}
+	let promise = datapromise("http://127.0.0.1:3000")
+	promise
+	.then(deta1=>{
+		return datapromise(deta1.kuazhu_url)
+	})
+	.then(deta2=>{
+		console.log(deta2.userInfo.phoneNum)
+	})
+</script>
+</html>
