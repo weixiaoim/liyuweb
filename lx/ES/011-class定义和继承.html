@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>class的定义和继承</title>
+</head>
+<body>
+	
+</body>
+<script>
+	class Person{
+		constructor(name,age){
+			this.name = name;
+			this.age = age;
+		}
+		sayName(){
+			console.log('i am ' + this.name)
+		}
+		sayAge(){
+			console.log('i am ' + this.age + ' years old');
+		}
+	}
+
+	let p = new Person('wyk',18);
+	console.log(p)
+	p.sayName();
+	p.sayAge();
+
+
+
+	class student extends Person{
+		constructor(name,age,major){
+			super();
+			this.major = major;
+		}
+		sayMajor(){
+			console.log('i am ' + this.major);
+		}
+	}
+	let s = new student('lh',16,'teacher');
+	console.log(s);
+	s.sayName();
+	s.sayAge();
+	s.sayMajor();
+</script> 
+</html>

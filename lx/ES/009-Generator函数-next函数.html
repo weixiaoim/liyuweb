@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>next函数</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function * gen(x){
+		console.log('x=',x);
+		let y = yield(x + 5);
+		console.log('y=',y);
+		let z = yield (y + 10);
+		// console.log('z=',z);
+		// return (x + y + z);
+	}
+	let g = gen(5);
+	console.log(g.next());
+	console.log(g.next());
+</script>
+</html>
