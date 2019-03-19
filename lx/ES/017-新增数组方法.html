@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>新增数组方法</title>
+</head>
+<body>
+	<div class="box"></div>
+	<div class="box"></div>
+	<div class="box"></div>
+	<div class="box"></div>
+	<div class="box"></div>
+	<div class="box"></div>
+	<div class="box"></div>
+	<div class="box"></div>
+	<div class="box"></div>
+	<div class="box"></div>
+</body>
+<script>
+	let likeArr = {
+		0:'aa',
+		1:'bb',
+		length:2
+	}
+	let arr = Array.from(likeArr);
+	console.log('likeArr=',likeArr);
+	console.log('arr=',arr);
+
+	function fn(){
+		console.log(arguments)
+	}
+	fn(11,22);
+
+
+	let aBox = document.querySelectorAll('.box');
+	console.log("aBox",aBox);
+	console.log(Array.from);
+
+
+	let arr1 = [11,22,33,44];
+	// let result = arr1.find(n=>n>20);//22
+	// let result = arr1.find(n=>n>22);//33
+	let result = arr1.find(n=>n>55);//undefined
+	console.log(result)
+</script>
+</html>
