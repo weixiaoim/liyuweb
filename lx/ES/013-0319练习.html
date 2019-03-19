@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>0319练习</title>
+</head>
+<body>
+	
+</body>
+<script>
+	class Person{
+		constructor(usertime,userthere){
+			this.usertime = usertime;
+			this.userthere = userthere;
+		}
+		sayUsertime(){
+			console.log('this time is '+this.usertime)
+		}
+		sayUserthere(){
+			console.log('this there is '+this.userthere)
+		}
+		static sayHi(){
+			console.log('Hi....');
+		}
+	}
+
+
+
+	let p = new Person('2019-03-19','henan');
+	console.log(p);
+	p.sayUsertime();
+	p.sayUserthere();
+	Person.sayHi();
+
+
+
+	class student extends Person{
+		constructor(usertime,userthere,userwork){
+			super(usertime,userthere);
+			this.userwork = userwork;
+		}
+		sayUserwork(){
+			console.log('i am a ' + this.userwork);
+		}
+	}
+	let s = new student("15:00","xuchang","student");
+	console.log(s);
+	s.sayUsertime();
+	s.sayUserthere();
+	s.sayUserwork();
+	student.sayHi();
+</script>
+</html>

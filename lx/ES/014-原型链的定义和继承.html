@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>014-原型链的定义和继承</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function Person(name,age){
+		this.name = name;
+		this.age = age
+	}
+	Person.prototype.sayName = function(){
+		console.log("I am "+this.name);
+	}
+	Person.prototype.sayAge = function(){
+		console.log("I am "+this.age+(' years old'))
+	}
+	Person.sayHi = function(){
+		console.log("hi....");
+	}
+
+	var p = new Person("Tom",18);
+	console.log(p);
+	p.sayName();
+	p.sayAge();
+	Person.sayHi();
+
+
+	function student (name,age,major){
+		Person.call(this,name,age);
+		this.major = major
+	}
+	student.prototype = Object.create(Person.prototype);
+
+
+	student.prototype.sayMajor = function(){
+		console.log("I am a "+this.major)
+	}
+
+
+	student.sayHi = Person.sayHi;
+
+
+	var s = new student("leo",88,"teacher");
+	console.log(s);
+	s.sayName();
+	s.sayAge();
+	s.sayMajor();
+	student.sayHi();
+
+</script>
+</html>
