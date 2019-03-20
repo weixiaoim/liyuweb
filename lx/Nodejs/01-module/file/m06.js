@@ -7,10 +7,14 @@ const eee = new emit();
 
 console.log(eee)
 
-// ett.on('test',()=>{
 
-// })
-// ett.emit('test')
+/*
+ett.on('test',()=>{
+
+})
+ett.emit('test')
+
+*/
 //设置最大绑定事件个数
 eee.setMaxListeners(11)
 eee.on('test',()=>{
