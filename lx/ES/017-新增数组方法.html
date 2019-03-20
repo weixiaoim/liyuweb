@@ -38,9 +38,21 @@
 
 
 	let arr1 = [11,22,33,44];
-	// let result = arr1.find(n=>n>20);//22
-	// let result = arr1.find(n=>n>22);//33
-	let result = arr1.find(n=>n>55);//undefined
-	console.log(result)
+
+	/*
+	console.log(arr1.find(n=>n>20)); //22
+	console.log(arr1.find(n=>n>22)); //33
+	console.log(arr1.find(n=>n>55)); //undefined
+
+
+	*/
+	console.log(arr1.findIndex(n=>n>20)); //1
+	console.log(arr1.findIndex(n=>n>22));//2
+	console.log(arr1.findIndex(n=>n>55));//-1
+
+	console.log(arr1.includes(11));//true
+	console.log(arr1.includes('11'));//flase
+	console.log(arr1.includes(55));//flase
+
 </script>
 </html>
