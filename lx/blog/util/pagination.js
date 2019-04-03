@@ -32,7 +32,7 @@ async function pagination(options){
 	if(isNaN(page)){
 		page = 1;
 	}
-	//容错处理
+	//容错处理 如果总页数是0
 	if (page ==0) {
 		page = 1;
 	}

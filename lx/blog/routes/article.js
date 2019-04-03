@@ -1,6 +1,7 @@
 
 const express = require('express')
 const CategoryModel = require('../models/category.js')
+const ArticleModel = require('../models/article.js')
 const pagination = require('../util/pagination.js')
 const router = express.Router()
 
@@ -13,24 +14,24 @@ router.use((req,res,next)=>{
 	}
 })
 
-//显示分类列表
+//显示文章列表
 router.get("/",(req,res)=>{
 		const options = {
 		page:req.query.page,
-		model:CategoryModel,
+		model:ArticleModel,
 		query:{},
 		projection:'-password -__v',
-		sort:{order:1}
+		sort:{_id:1}
 	}
 	pagination(options)
 	.then(data=>{
-		res.render('admin/category_list',{
+		res.render('admin/article_list',{
 			userInfo:req.userInfo,
-			categories:data.docs,
+			articles:data.docs,
 			page:data.page,
 			list:data.list,
 			pages:data.pages,
-			url:'/category'
+			url:'/article'
 		})	
 	})
 })
