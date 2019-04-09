@@ -1,4 +1,9 @@
-
+/*
+* @Author: TomChen
+* @Date:   2019-03-13 18:10:45
+* @Last Modified by:   TomChen
+* @Last Modified time: 2019-04-04 18:44:57
+*/
 ;(function($){
 	var $login = $('#login');
 	var $register = $('#register');
@@ -14,7 +19,7 @@
 		$login.show()
 	})
 	var usernameReg = /^[a-z][0-9a-z_]{2,9}$/i;
-	var passwordReg = /^\w{5,10}$/;
+	var passwordReg = /^\w{3,6}$/;
 	//2.用户注册
 	$('#sub-register').on('click',function(){
 		//2.1 获取表单数据
@@ -28,9 +33,9 @@
 		if(!usernameReg.test(username)){
 			errMsg = '用户名以字母开头,包含数组下划线的3-10位字符'
 		}
-		//密码5-10位字符
+		//密码3-6位字符
 		else if(!passwordReg.test(password)){
-			errMsg = '密码5-10位字符'
+			errMsg = '密码3-6位字符'
 		}
 		//密码输入一致
 		else if(password != repassword){
@@ -113,4 +118,105 @@
 			})
 		}
 	})
+	//4.文章列表分页
+	var $articlePagination = $('#article-page');
+	function buildArtileListHtml(articles){
+		var html = '';
+		articles.forEach(function(article){
+			var createdAt = moment(article.createdAt).format('YYYY年MM月DD日 H:mm:ss')
+			html += `<div class="panel panel-default content-item">
+					    <div class="panel-heading">
+					      <h3 class="panel-title">
+					        <a href="/view/${ article._id.toString() }" class="link" target="_blank">${article.title}</a>
+					      </h3>
+					    </div>
+					    <div class="panel-body">
+					      ${ article.intro }
+					    </div>
+					    <div class="panel-footer">
+					      <span class="glyphicon glyphicon-user"></span>
+					      <span class="panel-footer-text text-muted">${ article.user.username }</span>
+					      <span class="glyphicon glyphicon-th-list"></span>
+					      <span class="panel-footer-text text-muted">${ article.category.name  }</span>
+					      <span class="glyphicon glyphicon-time"></span>
+					      <span class="panel-footer-text text-muted">${ createdAt }</span>
+					      <span class="glyphicon glyphicon-eye-open"></span>
+					      <span class="panel-footer-text text-muted"><em>${ article.click }</em>已阅读</span>
+					    </div>
+					  </div>
+					`
+		})
+
+		return html;
+	}
+	function buildPaginationHtml(list, page){
+		var html = '';
+		html = `<li>
+			      <a href="javascript:;" aria-label="Previous">
+			        <span aria-hidden="true">&laquo;</span>
+			      </a>
+			    </li>`
+		
+		list.forEach(function(i){
+			if(i == page){
+				html += `<li class="active"><a href="javascript:;">${ i }</a></li>`
+			}else{
+				html += `<li><a href="javascript:;">${ i }</a></li>`
+			}
+		})
+
+		html += `<li>
+			      <a href="javascript:;" aria-label="Next">
+			        <span aria-hidden="true">&raquo;</span>
+			      </a>
+			    </li>`
+		return html;
+	}
+	function buildCommentListHtml(comments){
+		var html = '';
+		comments.forEach(function(comment){
+			var createdAt = moment(comment.createdAt).format('YYYY年MM月DD日 H:mm:ss');
+			html += `<div class="panel panel-default">
+				        <div class="panel-heading">${ comment.user.username } 发布于 ${ createdAt}</div>
+				        <div class="panel-body">
+				          ${ comment.content }
+				        </div>
+				      </div>`
+		})
+
+
+		return html;
+	}
+	$articlePagination.on('get-data',function(ev,data){
+		//1.构建文章列表
+		$('#article-wrap').html(buildArtileListHtml(data.docs))
+		//2.构建分页器
+		var $pagination = $articlePagination.find('.pagination')
+		if(data.pages > 1){
+			$pagination.html(buildPaginationHtml(data.list,data.page))
+		}else{
+			$pagination.html('')
+		}	
+	})
+
+	$articlePagination.pagination({
+		url:'/articles'
+	})
+	//5.评论列表分页
+	var $commentPagination = $('#comment-page');
+	$commentPagination.on('get-data',function(ev,data){
+		//1.构建评论列表
+		$('#comment-wrap').html(buildCommentListHtml(data.docs))
+		//2.构建分页器
+		var $pagination = $commentPagination.find('.pagination')
+		if(data.pages > 1){
+			$pagination.html(buildPaginationHtml(data.list,data.page))
+		}else{
+			$pagination.html('')
+		}	
+	})	
+	$commentPagination.pagination({
+		url:'/comment/list'
+	})
+
 })(jQuery);

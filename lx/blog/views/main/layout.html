@@ -27,9 +27,18 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="index.html">首页<span class="sr-only">(current)</span></a></li>
-          {% for category in categories %}
-          <li><a href="/list/{{ category._id.toString() }}" class="link">{{ category.name }}</a></li>
+          {% if category %}
+          <li><a href="/">首页</span></a></li>
+          {% else %}
+          <li class="active"><a href="/">首页</span></a></li>
+          {% endif %}
+
+          {% for cate in categories %}
+          {% if cate._id.toString() == category %}
+          <li class="active"><a href="/list/{{ cate._id.toString() }}">{{ cate.name }}</a></li>
+          {% else %}
+           <li><a href="/list/{{ cate._id.toString() }}">{{ cate.name }}</a></li>
+          {% endif %}
           {% endfor %}
         </ul>
       </div><!-- /.navbar-collapse -->
@@ -120,12 +129,12 @@
           <!--用户注册登录-->          
           <div class="ad">
             <a href="#" class="thumbnail">
-              <img src="img/rb1.jpg" alt="广告1">
+              <img src="../../public/img/rb1.jpg" alt="广告1">
             </a>
           </div>
           <div class="ad">
             <a href="#" class="thumbnail">
-              <img src="img/rb3.jpg" alt="广告2">
+              <img src="../../public/img/rb3.jpg" alt="广告2">
             </a>
           </div>
           <div class="panel panel-default custom-panel">
@@ -136,30 +145,25 @@
               <div class="media">
                 <div class="media-left">
                   <a href="#">
-                    <img class="media-object img-me img-circle" src="img/object.jpg" alt="博主帅照">
+                    <img class="media-object img-me img-circle" src="../../public/img/object.jpg" alt="博主帅照">
                   </a>
                 </div>
                 <div class="media-body">
-                  <h4 class="media-heading">Sunshine</h4>
-                 该博主气宇轩昂 高大魁梧 英姿飒爽 衣着得体 眉清目秀，无时不流露出高贵淡雅的气质，配合他颀长纤细的身材。
+                  <h4 class="media-heading">Tom</h4>
+                  80后草根！07年入行。一直潜心研究web技术，一边工作一边积累经验，分享一些个人心得。
                 </div>
               </div>
             </div>
           </div>
           <div class="panel panel-default custom-panel hot-list">
             <div class="panel-heading">
-              <h3 class="panel-title">今日热搜</h3>
+              <h3 class="panel-title">点击排行</h3>
             </div>
             <div class="panel-body">
               <ul class="list-group">
-                <li class="list-group-item"><a href="detail.html" class="link text-ellipsis" target="_blank">Cras justo odioCras justo odioCras justo odioCras justo odioCras justo odio</a></li>
-                <li class="list-group-item"><a href="detail.html" class="link text-ellipsis" target="_blank">Cras justo odioCras justo odioCras justo odioCras justo odioCras justo odio</a></li>
-                <li class="list-group-item"><a href="detail.html" class="link text-ellipsis" target="_blank">Cras justo odioCras justo odioCras justo odioCras justo odioCras justo odio</a></li>
-                <li class="list-group-item"><a href="detail.html" class="link text-ellipsis" target="_blank">Cras justo odioCras justo odioCras justo odioCras justo odioCras justo odio</a></li>
-                <li class="list-group-item"><a href="detail.html" class="link text-ellipsis" target="_blank">Cras justo odioCras justo odioCras justo odioCras justo odioCras justo odio</a></li>
-                <li class="list-group-item"><a href="detail.html" class="link text-ellipsis" target="_blank">Cras justo odioCras justo odioCras justo odioCras justo odioCras justo odio</a></li>
-                <li class="list-group-item"><a href="detail.html" class="link text-ellipsis" target="_blank">Cras justo odioCras justo odioCras justo odioCras justo odioCras justo odio</a></li>
-                <li class="list-group-item"><a href="detail.html" class="link text-ellipsis" target="_blank">Cras justo odioCras justo odioCras justo odioCras justo odioCras justo odio</a></li>                                                 
+                {% for article in topArticles %}
+                <li class="list-group-item"><a href="/view/{{ article._id.toString() }}" class="link text-ellipsis" target="_blank">[{{article.click}}] {{ article.title }}</a></li>                                                 
+                {% endfor %}
               </ul>     
             </div>
           </div>
@@ -168,7 +172,7 @@
               <h3 class="panel-title">关注我</h3>
             </div>
             <div class="panel-body">
-              <img src="img/erweima.png" class="img-responsive" alt="">
+              <img src="../../public/img/erweima.png" class="img-responsive" alt="">
             </div>
           </div>                                         
         </div>
@@ -176,11 +180,13 @@
     </div>
   </div>
   <footer>
-    网络文化经营许可证：<a href="#">浙网文[2016]0268-027号</a>.
+    Blog Design by <a href="#">Kuazhu</a> <a href="#">豫ICP备11002373号-1</a>.
   </footer>
 <script src="/lib/jquery/jquery-1.12.4.min.js"></script>	
 <script src="/lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script src="/lib/moment/moment.js"></script>
 <script src="/js/logout.js"></script>
+<script src="/js/pagination.js"></script>
 <script src="/js/common.js"></script>
 {% block footer %}{% endblock %}
 </body>

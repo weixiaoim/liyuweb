@@ -1,4 +1,9 @@
-
+/*
+* @Author: TomChen
+* @Date:   2019-03-31 11:06:49
+* @Last Modified by:   TomChen
+* @Last Modified time: 2019-04-02 20:31:53
+*/
 const express = require('express')
 const CategoryModel = require('../models/category.js')
 const ArticleModel = require('../models/article.js')
@@ -16,12 +21,14 @@ router.use((req,res,next)=>{
 
 //显示文章列表
 router.get("/",(req,res)=>{
-		const options = {
+	/*
+	const options = {
 		page:req.query.page,
 		model:ArticleModel,
 		query:{},
-		projection:'-password -__v',
-		sort:{_id:1}
+		projection:'-__v',
+		sort:{_id:-1},
+		populates:[{path:"user",select:'username'},{path:'category',select:'name'}]
 	}
 	pagination(options)
 	.then(data=>{
@@ -32,118 +39,110 @@ router.get("/",(req,res)=>{
 			list:data.list,
 			pages:data.pages,
 			url:'/article'
-		})	
+		})		
 	})
+	*/
+	ArticleModel.getPaginationArticles(req)
+	.then(data=>{
+		res.render('admin/article_list',{
+			userInfo:req.userInfo,
+			articles:data.docs,
+			page:data.page,
+			list:data.list,
+			pages:data.pages,
+			url:'/article'
+		})		
+	})		
 })
-//显示添加分类页面
+
+//显示添加文章页面
 router.get("/add",(req,res)=>{
-	res.render('admin/category_add_edit',{
-		userInfo:req.userInfo
+	CategoryModel.find({},'name')
+	.sort({order:-1})
+	.then(categories=>{
+		res.render('admin/article_add_edit',{
+			userInfo:req.userInfo,
+			categories
+		})
 	})
 })
-//处理添加分类页面
+//处理添加文章
 router.post("/add",(req,res)=>{
-	const { name,order } = req.body;
-	CategoryModel.findOne({name})
-	.then(category=>{
-		if (category) {
-			//已经存在同名的分类
-			res.render('admin/error',{
-				userInfo:req.userInfo,
-				message:"添加分类失败，分类已存在"
-			})
-		}else{
-			CategoryModel.insertMany({name,order})
-			.then(categories=>{
-				res.render('admin/success',{
-					userInfo:req.userInfo,
-					message:'分类添加成功',
-					url:'/category'
-				})
-			})
-			.catch(err=>{
-				throw err
-			})
-		}
+	const { category,title,intro,content } = req.body;
+	ArticleModel.insertMany({
+		title,
+		category,
+		intro,
+		content,
+		user:req.userInfo._id
+	})
+	.then(article=>{
+		res.render('admin/success',{
+			userInfo:req.userInfo,
+			message:'添加文章成功',
+			url:'/article'
+		})
 	})
 	.catch(err=>{
 		res.render('admin/error',{
 			userInfo:req.userInfo,
-			message:"添加分类失败，数据库操作失误，请稍后再试"
+			message:"添加文章失败,操作数据库错误,稍后再试一试"
 		})
 	})
 })
+
 //显示编辑页面
 router.get('/edit/:id',(req,res)=>{
 	const { id } = req.params
-	CategoryModel.findById(id)
-	.then(category=>{
-		res.render('admin/category_add_edit',{
-			userInfo:req.userInfo,
-			category
-		})
+	CategoryModel.find({},'name')
+	.sort({order:-1})
+	.then(categories=>{
+		ArticleModel.findById(id)
+		.then(article=>{
+			res.render('admin/article_add_edit',{
+				userInfo:req.userInfo,
+				article,
+				categories
+			})		
+		})		
 	})
 })
 
 //处理编辑
 router.post('/edit',(req,res)=>{
-	const { id,name,order } = req.body
-	CategoryModel.findById(id)
-	.then(category=>{
-		if(category.name == name && category.order == order){//没有修改
-			res.render('admin/error',{
-				userInfo:req.userInfo,
-				message:"请修改后再提交"
-			})
-		}else{
-			CategoryModel.findOne({name:name,_id:{$ne:id}})
-			.then(newCategory=>{
-				if (newCategory) {
-					res.render('admin/error',{
-						userInfo:req.userInfo,
-						message:"修改分类失败，分类已存在"
-					})
-				}else{
-					CategoryModel.updateOne({_id:id},{name,order})
-					.then(result=>{
-						res.render('admin/success',{
-							userInfo:req.userInfo,
-							message:'分类修改成功',
-							url:'/category'
-						})
-					})
-				}
-				
-			})
-			.catch(err=>{
-					throw err;
-			})
-		}
-	})
-	.catch(err=>{
-		res.render('admin/error',{
-			userInfo:req.userInfo,
-			message:"修改分类失败，数据库操作失误，请稍后再试"
-		})
-	})
-})
-//删除
-router.get('/delete/:id',(req,res)=>{
-	const { id } = req.params
-	CategoryModel.deleteOne({_id:id})
+	const { id,category,title,intro,content } = req.body;
+	ArticleModel.updateOne({_id:id},{category,title,intro,content})
 	.then(result=>{
 		res.render('admin/success',{
 			userInfo:req.userInfo,
-			message:'分类删除成功',
-			url:'/category'
+			message:'修改文章成功',
+			url:'/article'
 		})
 	})
 	.catch(err=>{
 		res.render('admin/error',{
 			userInfo:req.userInfo,
-			message:"删除分类失败，数据库操作失误，请稍后再试"
-		})
+			message:"修改文章失败,操作数据库错误,稍后再试一试"
+		})		
 	})
 })
 
+//删除
+router.get('/delete/:id',(req,res)=>{
+	const { id } = req.params
+	ArticleModel.deleteOne({_id:id})
+	.then(result=>{
+		res.render('admin/success',{
+			userInfo:req.userInfo,
+			message:'删除文章成功',
+			url:'/article'
+		})	
+	})
+	.catch(err=>{
+		res.render('admin/error',{
+			userInfo:req.userInfo,
+			message:"删除文章失败,操作数据库错误,稍后再试一试"
+		})		
+	})	
+})
 module.exports = router
