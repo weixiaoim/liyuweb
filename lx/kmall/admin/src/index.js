@@ -1,9 +1,4 @@
-/*
-* @Author: TomChen
-* @Date:   2019-04-09 19:28:12
-* @Last Modified by:   TomChen
-* @Last Modified time: 2019-04-12 19:05:31
-*/
+
 import React from 'react'
 import ReactDOM from 'react-dom'
 

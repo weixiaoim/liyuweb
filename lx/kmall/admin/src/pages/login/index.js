@@ -2,6 +2,9 @@
 
 import React,{ Component } from 'react'
 import { connect } from 'react-redux'
+
+import { actionCreator } from './store'
+
 import axios from 'axios'
 import {
   Form, Icon, Input, Button, message,
@@ -13,37 +16,12 @@ class NormalLoginForm extends Component {
 	constructor(props){
 		super(props);
 		this.handleSubmit = this.handleSubmit.bind(this)
-		this.state = {
-			isFething:false
-		}
 	}
 	handleSubmit(e){
 		e.preventDefault();
 		this.props.form.validateFields((err, values) => {
 			if (!err) {
-			// console.log('Received values of form: ', values);
-				this.setState(()=>({isFething:true}))
-				axios({
-					method:'post',
-					url:'http://127.0.0.1:3000/admin/login',
-					data:values
-				})
-				.then(result=>{
-					// console.log(result);
-					if (result.data.code == 0) {//登陆成功
-						//跳转到后台首页
-						window.location.href = "/"
-					}else if(result.data.code == 1){
-						message.error(result.data.message)
-					}
-				})
-				.catch(err=>{
-					console.log(err);
-					message.error('网络请求失败，请稍后再试')
-				})
-				.finally(()=>{
-					this.setState(()=>({isFething:false}))
-				})
+				this.props.handleLogin(values);
 			}
 		});
 	}
@@ -68,7 +46,7 @@ class NormalLoginForm extends Component {
 				  )}
 				</Form.Item>
 				<Form.Item>
-				  <Button type="primary" onClick={this.handleSubmit} className="login-form-button" loading={this.props.isFething}>
+				  <Button type="primary" onClick={this.handleSubmit} className="login-form-button" loading={this.props.isFetching}>
 				    登陆
 				  </Button>
 				</Form.Item>
@@ -83,13 +61,16 @@ const WrappedNormalLoginForm = Form.create({ name: 'normal_login' })(NormalLogin
 
 const mapStateToProps = (state)=>{
 	return{
-		isFething:state.get('login').get('isFething')
+		isFetching:state.get('login').get('isFetching')
 	}
 }
 
 const mapDispatchToProps = (dispatch)=>{
 	return{
-		
+		handleLogin:(values)=>{
+			const action = actionCreator.getLoginAction(values);
+			dispatch(action)
+		}
 	}
 }
 export default connect(mapStateToProps,mapDispatchToProps) (WrappedNormalLoginForm);

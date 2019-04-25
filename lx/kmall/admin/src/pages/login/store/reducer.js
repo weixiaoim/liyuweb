@@ -9,10 +9,16 @@ import { fromJS } from 'immutable'
 import * as types from './actionTypes.js'
 
 const defaultState = fromJS({
-	isFething:false
+	isFetching:false
 })
 
 export default (state=defaultState,action)=>{
+	if(action.type == types.LOGIN_REQUEST){
+		return state.set('isFetching',true)
+	}
+	if(action.type == types.LOGIN_DONE){
+		return state.set('isFetching',false)
+	}
 
 	return state;
 }
