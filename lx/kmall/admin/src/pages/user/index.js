@@ -6,16 +6,16 @@ import Layout from 'common/layout'
 
 import './index.css'
 
-class Home extends Component{
+class User extends Component{
 	render(){
 		return (
-			<div className = "Home">
+			<div className = "User">
 				<Layout>
-				home page!!
+				user page!!
 				</Layout>
 			</div>
 		)
 	}
 }
 
-export default Home;
+export default User;
