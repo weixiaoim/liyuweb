@@ -1,0 +1,30 @@
+<view class='container'>
+  <swiper indicator-dots='true' indicator-color='#fff' indicator-active-color='#f21' autoplay='true'>
+    <swiper-item>
+      <image src='../../images/swiper/rb1.jpg'></image>
+    </swiper-item>
+    <swiper-item>
+      <image src='../../images/swiper/rb3.jpg'></image>
+    </swiper-item>
+    <swiper-item>
+      <image src='../../images/swiper/rb5.jpg'></image>
+    </swiper-item>
+  </swiper>
+  <view class='article-wrap'>
+    <view class='article-item'>
+      <view class='article-head'>
+        <image class='article-head-avatar' src='../../images/tx.jpg'></image>
+        <text class='article-head-date'>2019-05-07</text>
+      </view>
+      <text class='article-title'>我是文章标题</text>
+      <image class='article-img' src='../../images/rb2.jpg'></image>
+      <text class='article-desc'>我是描述</text>
+      <view class='article-footer'>
+        <image class='article-footer-icon' src='../../images/icon/star.png'></image>
+        <text class='article-footer-text'>20</text>
+        <image class='article-footer-icon' src='../../images/icon/view.png'></image>
+        <text class='article-footer-text'>30</text>
+      </view>
+    </view>
+  </view>
+</view>
