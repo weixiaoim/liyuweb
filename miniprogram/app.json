@@ -1,10 +1,13 @@
 {
   "pages": [
     "pages/article/article",
+    "pages/article/article-detail/article-detail",
     "pages/index/index"
-  
+    
   ],
   "window": {
-    "navigationBarBackgroundColor": "#000"
-  }
+    "navigationBarBackgroundColor": "#000",
+    "enablePullDownRefresh": true
+  },
+  "sitemapLocation": "sitemap.json"
 }
