@@ -1,5 +1,6 @@
 {
   "pages": [
+    
     "pages/article/article",
     "pages/article/article-detail/article-detail",
     "pages/index/index"
@@ -9,5 +10,6 @@
     "navigationBarBackgroundColor": "#000",
     "enablePullDownRefresh": true
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "requiredBackgroundModes":["audio"]
 }

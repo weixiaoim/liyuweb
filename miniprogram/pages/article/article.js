@@ -18,6 +18,7 @@ Page({
         desc:'我是描述',
         star:30,
         view:40
+        
       },
       {
         avatar: '../../images/tx.jpg',
