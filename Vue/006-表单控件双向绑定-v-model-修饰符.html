@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<p>{{message}}</p>
+		<!-- 直接输入 -->
+		<input type="text" v-model='message' />
+		<!-- 输入完成后显示 -->
+		<input type="text" v-model.lazy='message' />
+		<!-- 只显示数字，其他转化为空 -->
+		<input type="text" v-model.number='message' />
+		<!-- 删除空格 -->
+		<input type="text" v-model.trim='message' />
+	</div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+	let vm = new Vue({
+		el:'#app',
+		data:{
+			message:'hello vue',
+		}
+	});
+	
+</script>
+</html>
