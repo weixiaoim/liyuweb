@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	
+</head>
+<body>
+	<div id="app">
+		<a @click.prevent="goShopping()" href="https://www.taobao.com">淘宝</a>
+	</div>
+	</div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+	let vm = new Vue({
+		el:'#app',
+		data:{
+			
+		},
+		methods:{
+			goShopping(){
+				console.log('go  shopping...')
+			}
+		}
+	});
+</script>
+</html>
